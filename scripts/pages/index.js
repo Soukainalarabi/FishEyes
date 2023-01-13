@@ -18,7 +18,8 @@ async function displayData(photographers) {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
         userCardDOM.addEventListener("click", () => {
-            window.location = "photographer.html";
+             window.location = "photographer.html";
+         console.log(data.id);
 
         })
     });

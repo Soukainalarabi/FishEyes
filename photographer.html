@@ -5,38 +5,145 @@
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
+  <script src="https://kit.fontawesome.com/6d1afd3785.js" crossorigin="anonymous"></script>
+
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <title>Fisheye - photographe </title>
 </head>
 
 <body>
-  <header>
-    <img src="assets/images/logo.png" class="logo" />
-  </header>
-  <main id="main">
-    <div class="photograph-header">
-      <h2>MimiKeel <br>COUCOU<br> c'est moi </h2>
+  <div class="container">
 
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      <img src="assets/photographers/MimiKeel.jpg" alt="">
-    </div>
-  </main>
-  <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
+    <header>
+      <img src="assets/images/logo.png" class="logo" />
+    </header>
+    <main id="main">
+      <div class="photograph-header">
+         <div class="photograph-information">
+          <!-- <h1>MimiKeel </h1>
+          <h2>cc</h2>
+          <p>photographer</p> -->
+        </div> 
+        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <!-- <img src="assets/photographers/MimiKeel.jpg" alt=""> -->
+      </div>
+
+
+      <div class="photograph-creation">
+        <div class="choice">
+          <label for="choice-select">Trier par:</label>
+          <select name="pets" id="choice-select">
+            <option class="popularite">Popularité</option>
+            <option class="date">Date</option>
+            <option class="titre">Titre</option>
+          </select>
         </div>
-        <button class="contact_button">Envoyer</button>
-      </form>
+        <div id="galerie">
+          <div class="groupe1">
+            <div class="galerie-case">
+              <a href="#">
+                <img src="assets/images/Mimi/Animals_Rainbow.jpg" alt="Auberge la cannebière">
+              </a>
+              <div class="like">
+                <p>Auberge la cannebière</p>
+                <div class="heart">
+                  <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+                  <div class="heart2"><i class="fas fa-heart fa-1x"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="galerie-case">
+              <a href="#">
+                <img src="assets/images/Mimi/Animals_Rainbow.jpg" alt="Auberge la cannebière">
+              </a>
+              <div class="like">
+                <p>Auberge la cannebière</p>
+                <div class="heart">
+                  <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+                  <div class="heart2"><i class="fas fa-heart fa-1x"></i></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="galerie-case">
+              <a href="#">
+                <img src="assets/images/Mimi/Animals_Rainbow.jpg" alt="Auberge la cannebière">
+              </a>
+              <div class="like">
+                <p>Auberge la cannebière</p>
+                <div class="heart">
+                  <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+                  <div class="heart2"><i class="fas fa-heart fa-1x"></i></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="groupe1">
+            <div class="galerie-case">
+              <a href="#">
+                <img src="assets/images/Mimi/Animals_Rainbow.jpg" alt="Auberge la cannebière">
+
+              </a>
+              <div class="like">
+                <p>Auberge la cannebière</p>
+                <div class="heart">
+                  <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+                  <div class="heart2"><i class="fas fa-heart fa-1x"></i></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="galerie-case">
+              <a href="#">
+                <img src="assets/images/Mimi/Animals_Rainbow.jpg" alt="Auberge la cannebière">
+              </a>
+              <div class="like">
+                <p>Auberge la cannebière</p>
+                <div class="heart">
+                  <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+                  <div class="heart2"><i class="fas fa-heart fa-1x"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="galerie-case">
+              <a href="#">
+                <img src="assets/images/Mimi/Animals_Rainbow.jpg" alt="Auberge la cannebière">
+              </a>
+              <div class="like">
+                <p>Auberge la cannebière</p>
+                <div class="heart">
+                  <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+                  <div class="heart2"><i class="fas fa-heart fa-1x"></i></div>
+                </div>
+
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <div id="contact_modal">
+      <div class="modal">
+        <header>
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        </header>
+        <form>
+          <div>
+            <label>Prénom</label>
+            <input />
+          </div>
+          <button class="contact_button">Envoyer</button>
+        </form>
+      </div>
     </div>
   </div>
-  <script src="/scripts/pages/photographer.js"></script>
+  <script type="module" src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
 

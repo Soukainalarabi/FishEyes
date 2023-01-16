@@ -5,7 +5,11 @@ body {
     margin: 0;
 }
 
-
+.container {
+    margin: auto;
+  
+    max-width: 1350px;
+  }
 header {
     display: flex;
     flex-direction: row;

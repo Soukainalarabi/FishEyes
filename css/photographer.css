@@ -1,7 +1,21 @@
 #contact_modal {
     display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(196, 196, 196, 0.4);
+    
 }
-
+.container {
+    margin: auto;
+    /* margin-left: 3%;
+    margin-right: 3%; */
+    max-width: 1350px;
+  }
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -31,6 +45,7 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    margin-top: 5%;
 }
 
 .modal header {
@@ -78,12 +93,136 @@ form input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-
-
+    padding-left: 3%;
+    padding-right: 3%;
 }
 .photograph-header img{
 border-radius: 50%;
-height: 150px;
-width:150px;
+height: 200px;
+width:200px;
+}
+/*/////////creation//////////////:*/
+.photograph-creation{
+    padding-left: 3%;
+    padding-right: 8%;}
+    .choice{
+        padding-left: 5%;
+    padding-top: 3%;
+    }
+    label {
+        font-family: sans-serif;
+        font-size: 1rem;
+        padding-right: 10px;
+    }
+    
+    select{
+        color: white;
+        background: #911C1C !important;
+        font-size: 0.9rem;
+        padding: 2px 5px;
+        border-radius: 5px;
+    }
+ 
+#galerie {
+    border-radius: 15px;
+    width: 94%;
+    margin-left: 5%;
+   
+}.heart {
+    position: relative;
+    line-height: 2;
+    margin-top: 3px;
+    margin-left: 36%;  }
+  .heart:hover {
+    color: #901C1C;
+    transition: color 1s;
+  }
+  
+  .heart2 {
+    position: absolute;
+    color: white;
+    margin-top: -47px;
+    margin-left: 3.5px;
+    font-size: 25px;
+  }
+  .heart2:hover {
+    color: #901C1C;
+    transition: color 1s;
+  }
+  
+  .heart1 {
+    position: relative;
+  }
+  
+.groupe1{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2%;
+    
+}
+/* #galerie h1,
+h4 {
+    margin-left: 34px;
+    font-weight: bold;
+}
+
+h2 {
+    margin-left: 5%;}
+
+#galerie h4 {
+    margin-top: 23px;
+    color: black;
+} */
+
+#galerie a {
+    text-decoration: none;
+}
+
+
+
+.like{
+    display: flex;
+    align-items: baseline
+}
+.silver:before {
+    color: #c0c0c066;
+}
+
+/* .galerie-case h4 {
+    font-size: 10px;
+}
+
+.galerie-case a,
+.txt-populaire a {
+    color: black;
+    text-decoration: none;
+} */
+
+
+#galerie,
+#galerie .galerie-case,
+#galerie img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* #galerie .galerie-case {
+    background-color: white;
+   
+    border-radius: 15px;
+   
+} */
+
+#galerie p {
+
+        margin-top: 4px;
+        margin-bottom: 8px;
+
+}
+
+#galerie img {
+    height: 300px;
+    width: 350px;
+    border-radius: 5px;
+   
 }

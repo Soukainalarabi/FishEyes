@@ -8,7 +8,6 @@ function photographerFactory(data) {
     const h4 = document.createElement('h4')
     const pPrice = document.createElement('p')
     function getUserCardDOM() {
-        article.setAttribute("id", id)
         img.setAttribute("src", picture)
         img.setAttribute("alt", "description image")
         h2.textContent = name;

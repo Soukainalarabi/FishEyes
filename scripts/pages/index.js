@@ -8,7 +8,7 @@ async function displayData(photographers) {
         photographersSection.appendChild(userCardDOM);
         userCardDOM.addEventListener("click", () => {
             let identifiant = photographer.id
-            window.location.href = '/photographer.html?id=' + identifiant
+            window.location.href = `/photographer.html?id=${identifiant}`
         })
     });
 };

@@ -154,8 +154,9 @@ width:200px;
     position: relative;
   }
   
-.groupe1{
+#galerie{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-top: 2%;
     
@@ -202,7 +203,7 @@ h2 {
 #galerie,
 #galerie .galerie-case,
 #galerie img {
-    width: 100%;
+    /* width: 100%; */
     object-fit: cover;
 }
 

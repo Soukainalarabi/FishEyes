@@ -3,9 +3,11 @@ export default async function getPhotographers() {
     // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
     let response = await fetch('data/photographers.json')
     let photographers = await response.json()
-
     // et bien retourner le tableau photographers seulement une fois récupéré
     return ({
-        photographers: [...photographers.photographers]
+        photographers: [...photographers.photographers],
+        media: [...photographers.media]
+
+
     })
 }

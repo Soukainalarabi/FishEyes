@@ -5,10 +5,39 @@ const identifiant = urlParams.get('id')// elle renvoie une chaine de caractere p
 const photographers = await getPhotographers();
 let getPhotographer = () => {
     let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
+    console.log(photographer);
     if (!photographer) {
         window.location.href = '/index.html'
     }
-    const picture = `assets/photographers/` + photographer.portrait;
+    let mediaPhotographers = photographers.media;
+
+    mediaPhotographers.forEach(mediaPhotographer => {
+        const image = `assets/images/${mediaPhotographer.image}`
+        const video = `assets/images/${mediaPhotographer.video}`
+            ;
+        if (mediaPhotographer.photographerId == photographer.id) {
+            let galerieCase = document.querySelector(".galerie-case")
+
+            const img = document.createElement('img');
+            const p = document.createElement('p');
+
+            galerieCase.appendChild(img);
+            galerieCase.appendChild(p);
+
+            p.textContent = "description image"
+
+            img.setAttribute("src", image)
+            img.setAttribute("alt", mediaPhotographer.title)
+            p.textContent = mediaPhotographer.title
+        }
+
+    });
+
+
+
+    const picture = `assets/photographers/${photographer.portrait}`
+        ;
+
     let photographerHeader = document.querySelector(".photograph-header")
     let photographerInfo = document.querySelector(".photograph-information")
     let h1 = document.createElement('h1');

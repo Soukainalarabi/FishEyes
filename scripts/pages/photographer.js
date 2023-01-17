@@ -10,34 +10,45 @@ let getPhotographer = () => {
         window.location.href = '/index.html'
     }
     let mediaPhotographers = photographers.media;
-
     mediaPhotographers.forEach(mediaPhotographer => {
         const image = `assets/images/${mediaPhotographer.image}`
-        const video = `assets/images/${mediaPhotographer.video}`
-            ;
-        if (mediaPhotographer.photographerId == photographer.id) {
-            let galerieCase = document.querySelector(".galerie-case")
+        const videos = `assets/images/${mediaPhotographer.video}`;
 
+        if (mediaPhotographer.photographerId == identifiant) {
+            let galeries = document.getElementById("galerie")
+            let galerieCase = document.createElement("div")
+            galerieCase.setAttribute("class", "galerie-case")
             const img = document.createElement('img');
+            const video = document.createElement('video');
+            const source = document.createElement('source');
+
+
+            galeries.appendChild(galerieCase);
+
+            if (mediaPhotographer.image) {
+                img.setAttribute("src", image)
+                img.setAttribute("alt", mediaPhotographer.title)
+                galerieCase.appendChild(img);
+
+            } else {
+                source.setAttribute("src", videos)
+                source.setAttribute("type", "video/mp4")
+                video.setAttribute("controls", "")
+
+                video.appendChild(source);
+                galerieCase.appendChild(video);
+
+            }
+
             const p = document.createElement('p');
 
-            galerieCase.appendChild(img);
             galerieCase.appendChild(p);
 
-            p.textContent = "description image"
-
-            img.setAttribute("src", image)
-            img.setAttribute("alt", mediaPhotographer.title)
             p.textContent = mediaPhotographer.title
         }
 
     });
-
-
-
-    const picture = `assets/photographers/${photographer.portrait}`
-        ;
-
+    const picture = `assets/photographers/${photographer.portrait}`;
     let photographerHeader = document.querySelector(".photograph-header")
     let photographerInfo = document.querySelector(".photograph-information")
     let h1 = document.createElement('h1');

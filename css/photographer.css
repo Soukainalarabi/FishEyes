@@ -221,9 +221,10 @@ h2 {
 
 }
 
-#galerie img {
+#galerie img ,video{
     height: 300px;
     width: 350px;
     border-radius: 5px;
+    object-fit: cover;
    
 }

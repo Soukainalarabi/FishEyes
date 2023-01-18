@@ -57,10 +57,23 @@
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal header h1{
     font-size: 64px;
+    color: black;
     font-weight: normal;
     text-align: center;
+}
+.name{
+    font-size: 35px;
+    /* font-weight: normal;
+    text-align: center;  */
+    width: 100%; 
+    line-height: 24px;
+
+font-family: 'DM Sans';
+font-style: normal;
+font-weight: 400;
+/* color: #000000; */
 }
 
 form {
@@ -68,7 +81,9 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
-}
+    margin-bottom: 4px;
+    margin-top: 21px;
+   }
 
 form label {
     color: #312E2E;
@@ -76,11 +91,11 @@ form label {
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: self-start; */
+    /* margin-bottom: 12px; */
 }
 
 form input {
@@ -239,4 +254,7 @@ h2 {
     border-radius: 5px;
     object-fit: cover;
    
+}
+#message{
+Height:170px;
 }

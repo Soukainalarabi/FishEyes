@@ -1,6 +1,9 @@
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
+    const namePhotographer = localStorage.getItem('name');
+    const modal = document.getElementById("contact_modal")
+    let name = document.querySelector(".name")
     modal.style.display = "block";
+    name.textContent = namePhotographer
 }
 
 function closeModal() {

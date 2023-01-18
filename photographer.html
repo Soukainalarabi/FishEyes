@@ -20,7 +20,7 @@
     <main id="main">
       <div class="photograph-header">
         <div class="photograph-information">
-         
+
         </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
@@ -43,13 +43,31 @@
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
+          <h1>Contactez-moi</h1>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
+        <div class="name"></div>
+
         <form>
-          <div>
-            <label>Prénom</label>
-            <input />
+          <div class="formData">
+            <label for="first">Prénom</label><br />
+            <input class="text-control" type="text" id="first" name="first" /><br />
+            <p id="firstNameErrorMsg"></p>
+          </div>
+          <div class="formData">
+            <label for="last">Nom</label><br />
+            <input class="text-control" type="text" id="last" name="last" /><br />
+            <p id="lastNameErrorMsg"></p>
+          </div>
+          <div class="formData">
+            <label for="email">E-mail</label><br />
+            <input class="text-control" type="email" id="email" name="email" /><br />
+            <p id="emailErrorMsg"></p>
+          </div>
+          <div class="formData">
+            <label for="message">Votre message</label><br />
+            <input class="text-control" type="text" id="message" name="message" /><br />
+            <p id="messageErrorMsg"></p>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>

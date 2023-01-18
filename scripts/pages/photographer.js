@@ -17,18 +17,24 @@ let getPhotographer = () => {
         if (mediaPhotographer.photographerId == identifiant) {
             let galeries = document.getElementById("galerie")
             let galerieCase = document.createElement("div")
-            galerieCase.setAttribute("class", "galerie-case")
+            let like = document.createElement("div")
             const img = document.createElement('img');
             const video = document.createElement('video');
             const source = document.createElement('source');
+            const heart = document.createElement("div")
+            let link = document.createElement("a")
+            heart.setAttribute("class", "heart")
 
-
+            galerieCase.setAttribute("class", "galerie-case")
+            link.setAttribute("href", "#")
+            like.setAttribute("class", "like")
             galeries.appendChild(galerieCase);
+            galerieCase.appendChild(link);
 
             if (mediaPhotographer.image) {
                 img.setAttribute("src", image)
                 img.setAttribute("alt", mediaPhotographer.title)
-                galerieCase.appendChild(img);
+                link.appendChild(img);
 
             } else {
                 source.setAttribute("src", videos)
@@ -36,15 +42,22 @@ let getPhotographer = () => {
                 video.setAttribute("controls", "")
 
                 video.appendChild(source);
-                galerieCase.appendChild(video);
+                link.appendChild(video);
 
             }
 
             const p = document.createElement('p');
-
-            galerieCase.appendChild(p);
+            const numberLike = document.createElement('p');
+            galerieCase.appendChild(like);
+            like.appendChild(p);
+            // like.appendChild(numberLike);
+            like.appendChild(heart);
 
             p.textContent = mediaPhotographer.title
+            // numberLike.textContent = mediaPhotographer.likes
+
+            heart.innerHTML = `<p>${mediaPhotographer.likes}</p> <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+           `
         }
 
     });

@@ -45,36 +45,65 @@ let getMedia = (photographer) => {
             const video = document.createElement('video');
             const source = document.createElement('source');
             const heart = document.createElement("div")
-            let link = document.createElement("a")
+            let lightbox = document.createElement("a")
             heart.setAttribute("class", "heart")
             galerieCase.setAttribute("class", "galerie-case")
-            link.setAttribute("href", "#")
+            lightbox.setAttribute("href", "#")
             like.setAttribute("class", "like")
             galeries.appendChild(galerieCase);
-            galerieCase.appendChild(link);
-            if (mediaPhotographer.image) {
-                img.setAttribute("src", image)
-                img.setAttribute("alt", mediaPhotographer.title)
-                link.appendChild(img);
-            } else {
-                source.setAttribute("src", videos)
-                source.setAttribute("type", "video/mp4")
-                video.setAttribute("controls", "")
-                video.appendChild(source);
-                link.appendChild(video);
+            galerieCase.appendChild(lightbox);
+            let imageVideoDom = () => {
+                if (mediaPhotographer.image) {
+                    img.setAttribute("src", image)
+                    img.setAttribute("alt", mediaPhotographer.title)
+                    lightbox.appendChild(img);
+                } else {
+                    source.setAttribute("src", videos)
+                    source.setAttribute("type", "video/mp4")
+                    video.setAttribute("controls", "")
+                    video.appendChild(source);
+                    lightbox.appendChild(video);
+                }
             }
+            imageVideoDom()
+
             const p = document.createElement('p');
             galerieCase.appendChild(like);
             like.appendChild(p);
-            // like.appendChild(numberLike);
             like.appendChild(heart);
             p.textContent = mediaPhotographer.title
-            // numberLike.textContent = mediaPhotographer.likes
             heart.innerHTML = `<p>${mediaPhotographer.likes}</p> <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
            `
+            img.addEventListener("click", () => {
+                const contactModal = document.getElementById("contact_modal")
+                let modal = document.querySelector(".modal")
+                let h1 = document.querySelector(".contactez-moi")
+                let form = document.querySelector("form")
+                let header = document.querySelector(".header-modal")
+                let name = document.querySelector(".name")
+                name.style.display = "none"
+                form.style.display = "none"
+                h1.style.display = "none"
+                header.style.flexDirection = "column"
+                header.style.alignItems = "flex-end"
+
+                contactModal.style.display = "block";
+                // let mediaVideo = mediaPhotographer.video
+                let mediaAlt = mediaPhotographer.title
+                if (mediaAlt === img.alt) {
+                    let imageDivLightbox = document.createElement("div")
+                    imageDivLightbox.setAttribute("class", "imageLightbox")
+                    modal.style.backgroundColor = "black"
+                    let imageLightbox = document.createElement("img")
+                    modal.appendChild(header)
+                    header.appendChild(imageDivLightbox)
+                    imageLightbox.setAttribute("src", img.src)
+                    imageLightbox.setAttribute("alt", img.alt)
+                    imageDivLightbox.appendChild(imageLightbox)
+                }
+            })
         }
     });
 }
 let photographer = getPhotographer()
-
 getMedia(photographer)

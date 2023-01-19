@@ -4,11 +4,13 @@ function displayModal() {
     let name = document.querySelector(".name")
     modal.style.display = "block";
     name.textContent = namePhotographer
+
 }
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+
 }
 // lien vers la page d'accueil
 let allPhotographers = document.querySelector(".logo")

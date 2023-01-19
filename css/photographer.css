@@ -47,17 +47,33 @@
     margin: auto;
     margin-top: 5%;
 }
-
-.modal header {
+.header-modal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;  
+}
+.modal header ,.header-modal{
     justify-content: space-between;
     width: 100%;
 }
 
-.modal header img {
+.header-modal img {
     cursor: pointer;
 }
-
-.modal header h1{
+.imageLightbox{
+    position: relative;
+}
+.imageLightbox img{
+    position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+.modal .header-modal h1{
     font-size: 64px;
     color: black;
     font-weight: normal;

@@ -30,9 +30,9 @@
         <div class="choice">
           <label for="choice-select">Trier par:</label>
           <select name="pets" id="choice-select">
-            <option class="popularite">Popularité</option>
-            <option class="date">Date</option>
-            <option class="titre">Titre</option>
+            <option value="popularite">Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
           </select>
         </div>
         <div id="galerie">
@@ -41,7 +41,8 @@
       </div>
     </main>
     <div id="contact_modal">
-      <div class="modal">
+      <!-- <div class="modalForm">  -->
+      <div class="modal"> 
         <div class="header-modal">
           <h1 class="contactez-moi">Contactez-moi</h1>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
@@ -72,6 +73,8 @@
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
+            <!-- <div class="modalLightbox">  -->
+
     </div>
   </div>
   <script type="module" src="/scripts/pages/photographer.js"></script>

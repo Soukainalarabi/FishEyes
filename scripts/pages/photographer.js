@@ -1,6 +1,7 @@
 import getPhotographers from "/scripts/utils/photographers-service.js"
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+let selectOption = document.getElementById("choice-select")
 const identifiant = urlParams.get('id')// elle renvoie une chaine de caractere pas un number
 const photographers = await getPhotographers();
 let getPhotographer = () => {
@@ -32,13 +33,50 @@ let getPhotographer = () => {
     photographerDom()
     return photographer
 }
-let getMedia = (photographer) => {
+
+
+let getMedia = (photographer, sortedByDate, sortedByTitle) => {
+    let modal = document.querySelector(".modal")
+    let galeries = document.getElementById("galerie")
+    galeries.innerHTML = ""
     let mediaPhotographers = photographers.media;
+
+    let dateMedia = () => {
+
+    }
+    if (sortedByDate) {
+        mediaPhotographers.sort((m1, m2) => {
+            let date1 = new Date(m1.date)
+            let date2 = new Date(m2.date)
+            if (date1 > date2) {
+                return 1
+            }
+            if (date1 < date2) {
+                return -1
+            }
+            return 0
+        })
+
+    }
+    if (sortedByTitle) {
+        mediaPhotographers.sort((m1, m2) => {
+            let title1 = m1.title
+            let title2 = m2.title
+            if (title1 > title2) {
+                return 1
+            }
+            if (title1 < title2) {
+                return -1
+            }
+            return 0
+        })
+
+    }
+
     mediaPhotographers.forEach(mediaPhotographer => {
         const image = `assets/images/${photographer.name}/${mediaPhotographer.image}`
         const videos = `assets/images/${photographer.name}/${mediaPhotographer.video}`;
         if (mediaPhotographer.photographerId == identifiant) {
-            let galeries = document.getElementById("galerie")
             let galerieCase = document.createElement("div")
             let like = document.createElement("div")
             const img = document.createElement('img');
@@ -52,7 +90,7 @@ let getMedia = (photographer) => {
             like.setAttribute("class", "like")
             galeries.appendChild(galerieCase);
             galerieCase.appendChild(lightbox);
-            let imageVideoDom = () => {
+            let imageVideoDom = () => { //afficher tous les images videos dans le body
                 if (mediaPhotographer.image) {
                     img.setAttribute("src", image)
                     img.setAttribute("alt", mediaPhotographer.title)
@@ -66,7 +104,6 @@ let getMedia = (photographer) => {
                 }
             }
             imageVideoDom()
-
             const p = document.createElement('p');
             galerieCase.appendChild(like);
             like.appendChild(p);
@@ -74,36 +111,57 @@ let getMedia = (photographer) => {
             p.textContent = mediaPhotographer.title
             heart.innerHTML = `<p>${mediaPhotographer.likes}</p> <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
            `
-            img.addEventListener("click", () => {
-                const contactModal = document.getElementById("contact_modal")
-                let modal = document.querySelector(".modal")
-                let h1 = document.querySelector(".contactez-moi")
-                let form = document.querySelector("form")
-                let header = document.querySelector(".header-modal")
-                let name = document.querySelector(".name")
-                name.style.display = "none"
-                form.style.display = "none"
-                h1.style.display = "none"
-                header.style.flexDirection = "column"
-                header.style.alignItems = "flex-end"
 
-                contactModal.style.display = "block";
-                // let mediaVideo = mediaPhotographer.video
-                let mediaAlt = mediaPhotographer.title
-                if (mediaAlt === img.alt) {
+
+            let imageLightboxAffichage = () => { //afficher les images et videos dans la modale
+                let imageLightbox = document.createElement("img")
+                img.addEventListener("click", () => {
+                    // imageLightbox.textContent = ""
+                    const contactModal = document.getElementById("contact_modal")
                     let imageDivLightbox = document.createElement("div")
-                    imageDivLightbox.setAttribute("class", "imageLightbox")
-                    modal.style.backgroundColor = "black"
-                    let imageLightbox = document.createElement("img")
-                    modal.appendChild(header)
-                    header.appendChild(imageDivLightbox)
-                    imageLightbox.setAttribute("src", img.src)
-                    imageLightbox.setAttribute("alt", img.alt)
-                    imageDivLightbox.appendChild(imageLightbox)
-                }
-            })
+                    let h1 = document.querySelector(".contactez-moi")
+                    let form = document.querySelector("form")
+                    let header = document.querySelector(".header-modal")
+                    let name = document.querySelector(".name")
+                    name.style.display = "none";
+                    form.style.display = "none";
+                    h1.style.display = "none";
+                    header.style.flexDirection = "column"
+                    header.style.alignItems = "flex-end"
+                    contactModal.style.display = "block";
+                    // let mediaVideo = mediaPhotographer.video
+                    let mediaAlt = mediaPhotographer.title
+                    if (mediaAlt === img.alt) {
+                        imageDivLightbox.setAttribute("class", "imageLightbox")
+                        modal.style.backgroundColor = "black"
+                        modal.appendChild(header)
+                        header.appendChild(imageDivLightbox)
+                        imageLightbox.setAttribute("src", img.src)
+                        imageLightbox.setAttribute("alt", img.alt)
+                        imageDivLightbox.appendChild(imageLightbox)
+                    }
+
+                })
+
+            }
+            imageLightboxAffichage()
         }
     });
+
 }
+
 let photographer = getPhotographer()
+selectOption.addEventListener("change", (e) => {
+    selectOption.style.background = "blue"
+    if (e.target.value == "date") {
+        getMedia(photographer, true)
+    } else if (e.target.value == "popularite") {
+        getMedia(photographer, false)
+
+    } else if (e.target.value == "titre") {
+        getMedia(photographer, false, true)
+
+    }
+    ;
+})
 getMedia(photographer)

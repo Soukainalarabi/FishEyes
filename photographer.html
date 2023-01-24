@@ -22,7 +22,7 @@
         <div class="photograph-information">
 
         </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal(true)">Contactez-moi</button>
       </div>
 
 
@@ -41,14 +41,12 @@
       </div>
     </main>
     <div id="contact_modal">
-      <!-- <div class="modalForm">  -->
-      <div class="modal"> 
+      <div class="modal-form">
         <div class="header-modal">
           <h1 class="contactez-moi">Contactez-moi</h1>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </div>
         <div class="name"></div>
-
         <form>
           <div class="formData">
             <label for="first">Prénom</label><br />
@@ -73,8 +71,17 @@
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
-            <!-- <div class="modalLightbox">  -->
+      <div class="modal-lightbox">
+        <div class="closeIconLightbox">
+          <img src="assets/icons/iconsred.png" onclick="closeModal()" />
+        </div>
 
+        <div class="modalLightboxBody"></div>
+
+        <!-- <img src="assets/icons/close.svg" onclick="closeModal()" /> -->
+
+
+      </div>
     </div>
   </div>
   <script type="module" src="/scripts/pages/photographer.js"></script>

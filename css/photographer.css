@@ -9,6 +9,7 @@
     overflow: auto;
     background-color: rgba(196, 196, 196, 0.4);
     
+    
 }
 .container {
     margin: auto;
@@ -21,7 +22,9 @@
     height: 300px;
     margin: 0 100px;
 }
-
+.closeIconLightbox{
+    float: right;
+}
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -34,8 +37,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
-
-.modal {
+ .modal-lightbox{
+    padding-left: 10%;
+    padding-right: 10%;} 
+.modal-form{
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -45,8 +50,8 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
-    margin-top: 5%;
-}
+    margin-top: 5%;} 
+ 
 .header-modal{
     display: flex;
     flex-direction: row;
@@ -63,16 +68,18 @@
     cursor: pointer;
 }
 .imageLightbox{
+    display: flex;
     position: relative;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4%;
 }
 .imageLightbox img{
-    position: relative;
+ position: relative; 
     object-fit: cover;
-  background-color: #fefefe;
-  margin: auto;
   padding: 0;
-  width: 500px;
-  height: 400px;
+  width: 900px;
+  height: 900px;
   max-width: 1200px;
 }
 .modal .header-modal h1{

@@ -1,4 +1,4 @@
-import getPhotographers from "/scripts/utils/photographers-service.js"
+import getPhotographers from "./scripts/utils/photographers-service.js"
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 

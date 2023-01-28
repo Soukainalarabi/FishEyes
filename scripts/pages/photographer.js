@@ -142,26 +142,31 @@ let getMedia = (photographer, sortedByDate, sortedByTitle) => {
                 }
                 imageAffichage()
             })
-            iconPrecedent.addEventListener("click", () => {
+            function precedent() {
                 if (index == 0) {
-                    let totalIndex = mediaFilter.length
-                    console.log(mediaFilter[totalIndex - 1]);
-                    return
+                    imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[mediaFilter.length - 1].image}`
+                    pLightbox.textContent = `${mediaFilter[mediaFilter.length - 1].title}`
                 }
-                console.log(mediaFilter[index - 1]);
 
-
+                imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[index - 1].image}`
+                pLightbox.textContent = `${mediaFilter[index - 1].title}`
+            }
+            function suivant() {
+                if (index == mediaFilter.length - 1) {
+                    imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[0].image}`
+                    pLightbox.textContent = `${mediaFilter[0].title}`
+                }
+                imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[index + 1].image}`
+                pLightbox.textContent = `${mediaFilter[index + 1].title}`
+            }
+            iconPrecedent.addEventListener("click", () => {
+                
+                precedent()
             })
             iconSuivant.addEventListener("click", () => {
-                if (index + 1 == mediaFilter.length) {
-                    let firstIndex = 0;
-                    console.log(mediaFilter[firstIndex]);
-                }
-                if (index + 1 < mediaFilter.length) {
 
-                    console.log(mediaFilter[index + 1]);
-                }
 
+                suivant()
             })
         }
         lightboxAffichage()

@@ -1,12 +1,11 @@
 const modal = document.getElementById("contact_modal")
-const namePhotographer = localStorage.getItem('name');
 let name = document.querySelector(".name")
 
 let displayModal = (modalContact) => {
     let modalLightbox = document.querySelector(".modal-lightbox")
     let modalForm = document.querySelector(".modal-form")
     if (modalContact) {
-        name.innerHtml = ""
+        const namePhotographer = localStorage.getItem('name');
         name.textContent = namePhotographer
         modalLightbox.style.display = "none";
         modalForm.style.display = "block";

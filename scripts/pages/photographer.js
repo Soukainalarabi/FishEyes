@@ -32,7 +32,7 @@ let getPhotographer = () => {
     return photographer
 }
 const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
-let getMedia = (photographer, sortedByDate, sortedByTitle) => {
+let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
     let modal = document.querySelector(".modal")
     let galeries = document.getElementById("galerie")
     galeries.innerHTML = ""
@@ -65,6 +65,22 @@ let getMedia = (photographer, sortedByDate, sortedByTitle) => {
                 return -1
             }
             return 0
+        })
+
+    }
+    if (sortedByLike) {
+        mediaFilter.sort((m1, m2) => {
+            let like1 = m1.likes
+            let like2 = m2.likes
+            if (like1 < like2) {
+                return
+
+            }
+            if (like1 > like2) {
+                return -1
+            }
+            return 0
+
         })
 
     }
@@ -160,7 +176,7 @@ let getMedia = (photographer, sortedByDate, sortedByTitle) => {
                 pLightbox.textContent = `${mediaFilter[index + 1].title}`
             }
             iconPrecedent.addEventListener("click", () => {
-                
+
                 precedent()
             })
             iconSuivant.addEventListener("click", () => {
@@ -179,7 +195,7 @@ selectOption.addEventListener("change", (e) => {
     if (e.target.value == "date") {
         getMedia(photographer, true)
     } else if (e.target.value == "popularite") {
-        getMedia(photographer, false)
+        getMedia(photographer, false, false, true)
 
     } else if (e.target.value == "titre") {
         getMedia(photographer, false, true)

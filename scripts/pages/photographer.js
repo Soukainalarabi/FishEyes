@@ -1,4 +1,4 @@
-import getPhotographers from "/scripts/utils/photographers-service.js"
+import getPhotographers from "../utils/photographers-service.js"
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 let selectOption = document.getElementById("choice-select")

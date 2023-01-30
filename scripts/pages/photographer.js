@@ -4,11 +4,20 @@ const urlParams = new URLSearchParams(queryString);
 let selectOption = document.getElementById("choice-select")
 const identifiant = urlParams.get('id')// elle renvoie une chaine de caractere pas un number
 const photographers = await getPhotographers();
+const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
+const arrayLikes = mediaFilter.map(x => x.likes);
+let somme = 0
+for (let i = 0; i < arrayLikes.length; i++) {
+    somme += arrayLikes[i];
+}
+
+
 let getPhotographer = () => {
     let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
     if (!photographer) {
         window.location.href = '/index.html'
     }
+
     let photographerDom = () => {
         const picture = `assets/photographers/${photographer.portrait}`;
         let photographerHeader = document.querySelector(".photograph-header")
@@ -23,23 +32,22 @@ let getPhotographer = () => {
         photographerInfo.appendChild(h2);
         h2.textContent = photographer.city.concat(", ", photographer.country)
         photographerInfo.appendChild(h3);
-        h3.textContent = photographer.tagline;
+        h3.textContent = photographer.tagline.concat(" ", somme)
+
         photographerHeader.appendChild(img);
         img.setAttribute("src", picture)
-        img.setAttribute("alt", "description image")
+        img.setAttribute("alt", `image du photographe ${photographer.name}`
+        )
     }
     photographerDom()
     return photographer
 }
-const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
 let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
     let modal = document.querySelector(".modal")
     let galeries = document.getElementById("galerie")
     galeries.innerHTML = ""
 
-    let dateMedia = () => {
 
-    }
     if (sortedByDate) {
         mediaFilter.sort((m1, m2) => {
             let date1 = new Date(m1.date)
@@ -84,7 +92,7 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
         })
 
     }
-    mediaFilter.forEach((mediaPhotographer, index) => {
+    mediaFilter.forEach((mediaPhotographer, index,) => {
         const image = `assets/images/${photographer.name}/${mediaPhotographer.image}`
         const videos = `assets/images/${photographer.name}/${mediaPhotographer.video}`;
         let galerieCase = document.createElement("div")
@@ -133,6 +141,12 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
            `
         heart.addEventListener("click", () => {
             numberLikes.textContent = parseInt(mediaPhotographer.likes) + 1
+            somme += 1
+            let h3 = document.querySelector("h3")
+            h3.textContent = photographer.tagline.concat(" ", somme)
+
+
+                ;
 
 
         })
@@ -206,6 +220,7 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
 
 }
 let photographer = getPhotographer()
+
 selectOption.addEventListener("change", (e) => {
     if (e.target.value == "date") {
         getMedia(photographer, true)

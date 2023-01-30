@@ -244,7 +244,9 @@ h2 {
 }
 
 
-
+.numberLikes{
+    margin-right: 4px;
+}
 .like{
     display: flex;
     align-items: baseline;

@@ -9,7 +9,8 @@ function photographerFactory(data) {
     const pPrice = document.createElement('p')
     function getUserCardDOM() {
         img.setAttribute("src", picture)
-        img.setAttribute("alt", "description image")
+        img.setAttribute("alt", `image du photographe ${name}`
+        )
         h2.textContent = name;
         article.appendChild(img);
         article.appendChild(h2);

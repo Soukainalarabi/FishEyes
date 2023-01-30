@@ -72,11 +72,11 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
         mediaFilter.sort((m1, m2) => {
             let like1 = m1.likes
             let like2 = m2.likes
-            if (like1 < like2) {
+            if (like1 > like2) {
                 return
 
             }
-            if (like1 > like2) {
+            if (like1 < like2) {
                 return -1
             }
             return 0
@@ -114,13 +114,28 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
             }
         }
         imageVideoDom()
-        const p = document.createElement('p');
+        const pTitle = document.createElement('p');
+        const numberLikes = document.createElement("div")
+        const heart1 = document.createElement("div")
+
         galerieCase.appendChild(like);
-        like.appendChild(p);
+        numberLikes.setAttribute("class", "numberLikes")
+        heart1.setAttribute("class", "heart1")
+
+        like.appendChild(pTitle);
         like.appendChild(heart);
-        p.textContent = mediaPhotographer.title
-        heart.innerHTML = `<p>${mediaPhotographer.likes}</p> <div class="heart1"><i class="fas fa-heart fa-2x"></i></div>
+        heart.appendChild(numberLikes);
+        heart.appendChild(heart1);
+
+        numberLikes.textContent = mediaPhotographer.likes
+        pTitle.textContent = mediaPhotographer.title
+        heart1.innerHTML = `<i class="fas fa-heart fa-2x"></i>
            `
+        heart.addEventListener("click", () => {
+            numberLikes.textContent = parseInt(mediaPhotographer.likes) + 1
+
+
+        })
         let lightboxAffichage = () => { //afficher les images et videos dans la modale
             let imageLightbox = document.createElement("img")
             let iconPrecedent = document.createElement("img")
@@ -160,7 +175,7 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
             })
             function precedent() {
                 if (index == 0) {
-                    imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[mediaFilter.length - 1].image}`
+                    imageLightbox.src = `assets / images / ${photographer.name} /${mediaFilter[mediaFilter.length - 1].image}`
                     pLightbox.textContent = `${mediaFilter[mediaFilter.length - 1].title}`
                 }
 

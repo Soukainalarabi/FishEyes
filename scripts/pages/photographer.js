@@ -5,17 +5,19 @@ let selectOption = document.getElementById("choice-select")
 const identifiant = urlParams.get('id')// elle renvoie une chaine de caractere pas un number
 const photographers = await getPhotographers();
 const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
-const arrayLikes = mediaFilter.map(x => x.likes);
+const arrayLikes = mediaFilter.map(x => x.likes); //regrouper les likes du photographe dans un tableau
 let somme = 0
+
 for (let i = 0; i < arrayLikes.length; i++) {
-    somme += arrayLikes[i];
+    somme += arrayLikes[i]
 }
+
 
 
 let getPhotographer = () => {
     let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
     if (!photographer) {
-        window.location.href = '/index.html'
+        window.location.href = 'index.html'
     }
 
     let photographerDom = () => {
@@ -141,17 +143,13 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
            `
         heart.addEventListener("click", () => {
 
-            numberLikes.textContent = parseInt(mediaPhotographer.likes) + 1
+            numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
             somme += 1
             let h3 = document.querySelector("h3")
             h3.textContent = photographer.tagline.concat(" ", somme)
             like.style.color = "#901C1C"
-
-
-                ;
-
-
         })
+
         let lightboxAffichage = () => { //afficher les images et videos dans la modale
             let imageLightbox = document.createElement("img")
             let iconPrecedent = document.createElement("img")

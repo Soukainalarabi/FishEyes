@@ -49,7 +49,7 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </div>
         <div class="name"></div>
-        <form>
+        <form name="reserve" action="index.html" method="post">
           <div class="formData">
             <label for="first">Prénom</label><br />
             <input class="text-control" type="text" id="first" name="first" /><br />
@@ -62,7 +62,7 @@
           </div>
           <div class="formData">
             <label for="email">E-mail</label><br />
-            <input class="text-control" type="email" id="email" name="email" /><br />
+            <input type="email" id="email" name="email" /><br />
             <p id="emailErrorMsg"></p>
           </div>
           <div class="formData">
@@ -70,7 +70,7 @@
             <input class="text-control" type="text" id="message" name="message" /><br />
             <p id="messageErrorMsg"></p>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <input class="contact_button" type="submit" value="Envoyer" />
         </form>
       </div>
       <div class="modal-lightbox">

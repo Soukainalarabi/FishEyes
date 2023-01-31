@@ -140,10 +140,12 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
         heart1.innerHTML = `<i class="fas fa-heart fa-2x"></i>
            `
         heart.addEventListener("click", () => {
+
             numberLikes.textContent = parseInt(mediaPhotographer.likes) + 1
             somme += 1
             let h3 = document.querySelector("h3")
             h3.textContent = photographer.tagline.concat(" ", somme)
+            like.style.color = "#901C1C"
 
 
                 ;

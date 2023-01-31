@@ -11,7 +11,10 @@
     
     
 }
+p #erreurlastName,#erreurFirstName,#erreurEmail,#erreurMessage{
+color: #911C1C !important;
 
+}
 .choice-select{
     background-color: #911C1C;
 }

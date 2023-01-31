@@ -11,13 +11,10 @@ let somme = 0
 for (let i = 0; i < arrayLikes.length; i++) {
     somme += arrayLikes[i]
 }
-
-
-
 let getPhotographer = () => {
     let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
     if (!photographer) {
-        window.location.href = 'index.html'
+        window.location.href = '/index.html'
     }
 
     let photographerDom = () => {

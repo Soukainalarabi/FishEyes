@@ -6,8 +6,9 @@ const identifiant = urlParams.get('id')// elle renvoie une chaine de caractere p
 const photographers = await getPhotographers();
 const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
 const arrayLikes = mediaFilter.map(x => x.likes); //regrouper les likes du photographe dans un tableau
-let somme = 0
+let infoRectangle = document.querySelector(".info-rectangle")
 
+let somme = 0
 for (let i = 0; i < arrayLikes.length; i++) {
     somme += arrayLikes[i]
 }
@@ -21,17 +22,35 @@ let getPhotographer = () => {
         const picture = `assets/photographers/${photographer.portrait}`;
         let photographerHeader = document.querySelector(".photograph-header")
         let photographerInfo = document.querySelector(".photograph-information")
+        let pSomme = document.createElement('p');
+        let pPrice = document.createElement('p');
+        pPrice.setAttribute("class", "price")
+
+        pSomme.setAttribute("class", "sommeLike")
+        let heart2 = document.createElement('div')
+        heart2.setAttribute("class", "heart2")
+
         let h1 = document.createElement('h1');
         const h2 = document.createElement('h2');
         const h3 = document.createElement('h3');
         const img = document.createElement('img');
+        infoRectangle.appendChild(pSomme);
+        infoRectangle.appendChild(heart2);
+        infoRectangle.appendChild(pPrice);
+        pSomme.textContent = somme
+
+        heart2.innerHTML = `<i class="fas fa-heart fa-2x"></i>
+        `
+        pPrice.textContent = photographer.price + "€/jour"
+
+
         photographerInfo.appendChild(h1);
         h1.textContent = photographer.name;
         localStorage.setItem('name', photographer.name);
         photographerInfo.appendChild(h2);
         h2.textContent = photographer.city.concat(", ", photographer.country)
         photographerInfo.appendChild(h3);
-        h3.textContent = photographer.tagline.concat(" ", somme)
+        h3.textContent = photographer.tagline
 
         photographerHeader.appendChild(img);
         img.setAttribute("src", picture)
@@ -142,8 +161,8 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
 
             numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
             somme += 1
-            let h3 = document.querySelector("h3")
-            h3.textContent = photographer.tagline.concat(" ", somme)
+            let sommeLike = document.querySelector(".sommeLike")
+            sommeLike.textContent = somme
             like.style.color = "#901C1C"
         })
 
@@ -186,20 +205,29 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
             })
             function precedent() {
                 if (index == 0) {
-                    imageLightbox.src = `assets / images / ${photographer.name} /${mediaFilter[mediaFilter.length - 1].image}`
+                    imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[mediaFilter.length - 1].image}`
                     pLightbox.textContent = `${mediaFilter[mediaFilter.length - 1].title}`
+                    index = mediaFilter.length - 1
+                    return
                 }
 
                 imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[index - 1].image}`
                 pLightbox.textContent = `${mediaFilter[index - 1].title}`
+                index -= index
+
             }
             function suivant() {
                 if (index == mediaFilter.length - 1) {
                     imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[0].image}`
                     pLightbox.textContent = `${mediaFilter[0].title}`
+                    index = mediaFilter.length + 1
+
+                    return
                 }
                 imageLightbox.src = `assets/images/${photographer.name}/${mediaFilter[index + 1].image}`
                 pLightbox.textContent = `${mediaFilter[index + 1].title}`
+                index += index
+
             }
             iconPrecedent.addEventListener("click", () => {
 

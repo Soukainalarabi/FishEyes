@@ -15,6 +15,31 @@ p #erreurlastName,#erreurFirstName,#erreurEmail,#erreurMessage{
 color: #911C1C !important;
 
 }
+.info-rectangle{
+    position: fixed;
+    display: flex;
+    height: 57px;
+    width: 315px;
+    right: 15%;
+    top: 94%;
+    background: #DB8876;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+.info-rectangle p{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 20px;
+    
+}
+.heart2{
+    margin-top: 20px;
+    margin-left: 5px;
+}
+.info-rectangle .price{
+    margin-left: 30%;
+}
+
 .choice-select{
     background-color: #911C1C;
 }

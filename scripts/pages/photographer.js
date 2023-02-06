@@ -183,7 +183,7 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
                     let mediaAlt = mediaPhotographer.title
                     imageDivLightbox.appendChild(iconPrecedent)
                     iconPrecedent.setAttribute("src", "assets/icons/precedent.png")
-                    iconPrecedent.setAttribute("alt", "icon precedent")
+                    iconPrecedent.setAttribute("alt", "icon précedent")
                     iconPrecedent.style.width = "42px"
                     iconPrecedent.style.height = "42px"
                     imageDivLightbox.setAttribute("class", "imageLightbox")

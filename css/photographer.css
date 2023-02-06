@@ -21,7 +21,7 @@ color: #911C1C !important;
     height: 57px;
     width: 315px;
     right: 15%;
-    top: 94%;
+    top: 95%;
     background: #DB8876;
     border-radius: 5px;
     padding-left: 20px;
@@ -68,7 +68,7 @@ color: #911C1C !important;
 .closeIconLightbox{
     float: right;
 }
-.contact_button {
+.modal-contact button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -78,8 +78,21 @@ color: #911C1C !important;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
-    cursor: pointer;
 }
+/* .modam-contact{
+    text-decoration: none;
+    color: white;
+} */
+.modal-contact :hover,.modal-contact :focus {
+   
+    cursor: pointer;
+    color: #000000;
+    outline:  2px solid  #DB8876;  
+    background-color:#DB8876 ;
+
+} 
+
+
  .modal-lightbox{
     padding-left: 10%;
     padding-right: 10%;} 
@@ -173,6 +186,7 @@ form input {
     border-radius: 5px;
 }
 .photograph-header{
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -184,6 +198,7 @@ border-radius: 50%;
 height: 200px;
 width:200px;
 }
+
 /*/////////creation//////////////:*/
 .photograph-creation{
     padding-left: 3%;

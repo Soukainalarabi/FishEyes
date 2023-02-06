@@ -27,7 +27,9 @@ h1 {
     height: 50px;
     margin-left: 100px;
 }
-
+a{
+    text-decoration: none;
+}
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -52,6 +54,10 @@ h1 {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+}
+ a :focus {
+    outline:  2px solid  #DB8876;  
+
 }
 .photographer_section article h3 {
     color: #901C1C;

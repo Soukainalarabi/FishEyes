@@ -14,30 +14,41 @@
 <body>
   <div class="container">
 
-    <header role=”banner”>
+    <header aria-label=”banner”>
       <img src="assets/images/logo.png" alt="logo" class="logo" />
     </header>
-    <main id="main" aria-labelledby="medias photographe">
-      <div class="photograph-header" role="afficher le photographe">
-        <div class="photograph-information" role="contient les informations du photographe">
+    <main id="main" aria-label="medias photographe">
+      <div class="photograph-header">
+        <div class="photograph-information">
 
         </div>
-        <a class="modal-contact" href="#" aria-modal="true" onclick="displayModal(true)">
+        <a class="modal-contact" href="#" onclick="displayModal(true)">
           <button>Contactez-moi</button>
         </a>
       </div>
 
 
       <div class="photograph-creation">
-        <div class="choice">
+        <div class="choice" display="flex">
           <label for="choice-select">Trier par:</label>
-          <select name="pets" id="choice-select" aria-haspopup="true" aria-expanded="false">
-            <option value="par defaut">par défaut</option>
 
+          <!-- <select id="choice-select" aria-haspopup="true" aria-expanded="false">
+            <option value="par defaut">par défaut</option>
             <option value="popularite">Popularité</option>
             <option value="date">Date</option>
             <option value="titre">Titre</option>
-          </select>
+          </select>  -->
+          <div id="choice-select">
+            <button class="popularite" value="popularite" aria-label="trier par popularité">Popularité
+            </button>
+            <hr class="ligne1">
+            <button class="date" value="date" aria-label="trier par date">Date
+            </button>
+            <hr class="ligne2">
+
+            <button class="titre" value="titre" aria-label="trier par titre">Titre
+            </button>
+          </div>
         </div>
         <div id="galerie">
 
@@ -78,7 +89,7 @@
           <input class="contact_button" type="submit" value="Envoyer" />
         </form>
       </div>
-      <div class="modal-lightbox">
+      <div class="modal-lightbox" aria-label="image closeup view">
         <div class="closeIconLightbox">
           <img src="assets/icons/iconsred.png" alt="fermer la modale" onclick="closeModal()" />
         </div>

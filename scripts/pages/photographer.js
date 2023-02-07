@@ -1,13 +1,33 @@
 import getPhotographers from "../utils/photographers-service.js"
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-let selectOption = document.getElementById("choice-select")
 const identifiant = urlParams.get('id')// elle renvoie une chaine de caractere pas un number
 const photographers = await getPhotographers();
+let selectOption = document.getElementById("choice-select")
+// let iconHaut = document.querySelector(".icon-haut")
+let dateButton = document.querySelector(".date")
+let populariteButton = document.querySelector(".popularite")
+let titreButton = document.querySelector(".titre")
+let ligneHr1 = document.querySelector(".ligne1")
+let ligneHr2 = document.querySelector(".ligne2")
+
 const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
 const arrayLikes = mediaFilter.map(x => x.likes); //regrouper les likes du photographe dans un tableau
 let infoRectangle = document.querySelector(".info-rectangle")
+let iconBas = document.createElement("img")
+let iconHaut = document.createElement("img")
+let affichageMenuSelect = () => {
+    iconBas.setAttribute("class", "icon-bas")
+    iconBas.setAttribute("src", "assets/icons/enBas.png")
+    iconBas.setAttribute("alt", "vers le bas")
+    dateButton.style.display = "none"
+    titreButton.style.display = "none"
+    ligneHr1.style.display = "none"
+    ligneHr2.style.display = "none"
 
+    populariteButton.appendChild(iconBas)
+}
+affichageMenuSelect()
 let somme = 0
 for (let i = 0; i < arrayLikes.length; i++) {
     somme += arrayLikes[i]
@@ -42,8 +62,6 @@ let getPhotographer = () => {
         heart2.innerHTML = `<i class="fas fa-heart fa-2x"></i>
         `
         pPrice.textContent = photographer.price + "€/jour"
-
-
         photographerInfo.appendChild(h1);
         h1.textContent = photographer.name;
         localStorage.setItem('name', photographer.name);
@@ -51,11 +69,9 @@ let getPhotographer = () => {
         h2.textContent = photographer.city.concat(", ", photographer.country)
         photographerInfo.appendChild(h3);
         h3.textContent = photographer.tagline
-
         photographerHeader.appendChild(img);
         img.setAttribute("src", picture)
-        img.setAttribute("alt", `image du photographe ${photographer.name}`
-        )
+        img.setAttribute("alt", `image du photographe ${photographer.name}`)
     }
     photographerDom()
     return photographer
@@ -64,7 +80,29 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
     let modal = document.querySelector(".modal")
     let galeries = document.getElementById("galerie")
     galeries.innerHTML = ""
+    iconHaut.setAttribute("class", "icon-haut")
+    iconHaut.setAttribute("src", "assets/icons/enhaut.png")
+    iconHaut.setAttribute("alt", "vers le haut")
+    iconBas.addEventListener("click", () => {
+        populariteButton.style.display = "block"
+        iconBas.replaceWith(iconHaut)
+        dateButton.style.display = "block"
+        titreButton.style.display = "block"
+        ligneHr1.style.display = "block"
+        ligneHr2.style.display = "block"
+        dateButton.style.paddingRight = "none"
 
+
+
+    })
+    iconHaut.addEventListener("click", () => {
+        iconHaut.replaceWith(iconBas)
+        dateButton.style.display = "none"
+        titreButton.style.display = "none"
+        ligneHr1.style.display = "none"
+        ligneHr2.style.display = "none"
+
+    })
 
     if (sortedByDate) {
         mediaFilter.sort((m1, m2) => {
@@ -171,6 +209,8 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
             let iconPrecedent = document.createElement("img")
             let iconSuivant = document.createElement("img")
             let pLightbox = document.createElement("p")
+            let linkImageSuivant = document.createElement("a")
+            let linkImagePrecedent = document.createElement("a")
             let modal = document.getElementById("contact_modal")
             let imageDivLightbox = document.createElement("div")
             img.addEventListener("click", () => {
@@ -181,7 +221,11 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
                     modalLightbox.style.display = "block"
                     modalForm.style.display = "none"
                     let mediaAlt = mediaPhotographer.title
-                    imageDivLightbox.appendChild(iconPrecedent)
+                    linkImagePrecedent.setAttribute("class", "previous-image")
+                    linkImagePrecedent.setAttribute("href", "#")
+
+                    imageDivLightbox.appendChild(linkImagePrecedent)
+                    linkImagePrecedent.appendChild(iconPrecedent)
                     iconPrecedent.setAttribute("src", "assets/icons/precedent.png")
                     iconPrecedent.setAttribute("alt", "icon précedent")
                     iconPrecedent.style.width = "42px"
@@ -193,9 +237,15 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
                     pLightbox.setAttribute("class", "pLightbox")
                     pLightbox.textContent = mediaAlt
                     imageDivLightbox.appendChild(imageLightbox)
-                    imageDivLightbox.appendChild(iconSuivant)
+                    imageDivLightbox.appendChild(linkImageSuivant)
                     iconSuivant.setAttribute("src", "assets/icons/suivant.png")
                     iconSuivant.setAttribute("alt", "icon suivant")
+
+                    linkImageSuivant.setAttribute("class", "next-image")
+
+                    linkImageSuivant.setAttribute("href", "#")
+
+                    linkImageSuivant.appendChild(iconSuivant)
                     iconSuivant.style.width = "42px"
                     iconSuivant.style.height = "42px"
                     modalLightbox.appendChild(pLightbox)
@@ -233,6 +283,18 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
 
                 precedent()
             })
+            linkImagePrecedent.addEventListener("keypress", (e) => {
+
+                if (e.key == 'Enter') {
+                    console.log("cc")
+                }
+            });
+            iconSuivant.addEventListener("keypress", (e) => {
+
+                if (e.key == 'Enter') {
+                    console.log("Salut")
+                }
+            });
             iconSuivant.addEventListener("click", () => {
 
 
@@ -246,14 +308,41 @@ let getMedia = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
 }
 let photographer = getPhotographer()
 
-selectOption.addEventListener("change", (e) => {
+selectOption.addEventListener("click", (e) => {
     if (e.target.value == "date") {
+        dateButton.appendChild(iconBas)
+        dateButton.style.display = "block"
+        dateButton.style.paddingRight = "32px"
+        populariteButton.style.paddingRight = "24px"
+        populariteButton.style.display = "none"
+        titreButton.style.display = "none"
+        ligneHr1.style.display = "none"
+        ligneHr2.style.display = "none"
+
         getMedia(photographer, true)
+
     } else if (e.target.value == "popularite") {
+        populariteButton.appendChild(iconBas)
+        dateButton.style.display = "none"
+        populariteButton.style.display = "block"
+        titreButton.style.display = "none"
+        ligneHr1.style.display = "none"
+        ligneHr2.style.display = "none"
         getMedia(photographer, false, false, true)
 
+
     } else if (e.target.value == "titre") {
+        titreButton.appendChild(iconBas)
+        titreButton.style.paddingRight = "4px"
+        dateButton.style.display = "none"
+        dateButton.style.paddingRight = "32px"
+        populariteButton.style.paddingRight = "24px"
+        populariteButton.style.display = "none"
+        ligneHr1.style.display = "none"
+        ligneHr2.style.display = "none"
+        titreButton.style.display = "block"
         getMedia(photographer, false, true)
+
 
     }
     ;

@@ -7,9 +7,9 @@ body {
 
 .container {
     margin: auto;
-  
     max-width: 1350px;
-  }
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -20,47 +20,131 @@ header {
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
+    margin-right: 4%;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+    height: 40px;
+    margin-left: 7%;
 }
-a{
+
+a {
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .photographer_section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4%;
+    justify-items: stretch;
     margin-top: 100px;
+
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr;
+
+    justify-items: center;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 32px;
 }
+
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    object-fit: cover;
 }
- a :focus {
-    outline:  2px solid  #DB8876;  
+
+a :focus {
+    outline: 2px solid #DB8876;
 
 }
+
 .photographer_section article h3 {
     color: #901C1C;
+    margin-top: 0px;
 }
+
+.photographer_section article h4 {
+    margin-top: 4px;
+}
+
 .photographer_section article p {
-    color: #757575;}
+    color: #757575;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+@media(max-width: 932px) {
+    .photographer_section {
+        gap: 2%;
+
+    }
+
+    .photographer_section article h4 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .photographer_section article h2 {
+
+        font-size: 28px;
+    }
+
+    .logo {
+        margin-left: 3%;
+    }
+
+    h1 {
+        margin-right: 2%;
+    }
+
+}
+
+@media(max-width: 768px) {
+    .photographer_section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 596px) {
+    .photographer_section article h4 {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 174px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .photographer_section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    header {
+        flex-direction: column;
+        margin-top: 6%;
+    }
+    h1 {
+        font-size: 25px;
+    }
+    .logo {
+        height: 26px;
+    }
+    .photographer_section article h4 {
+        white-space: wrap;
+
+        width: auto;
+    }
+}

@@ -58,6 +58,7 @@ color: #911C1C !important;
     width: 40%;
 }
 #choice-select{
+    z-index: 1;
     padding: 4px; 
     border-radius: 7px;
     display: flex;

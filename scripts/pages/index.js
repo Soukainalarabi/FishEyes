@@ -8,12 +8,10 @@ async function displayData(photographers) {
         photographersSection.appendChild(userCardDOM);
         userCardDOM.addEventListener("click", () => {
             let identifiant = photographer.id
-            // let name = photographer.name
             window.location.href = `photographer.html?id=${identifiant}`
         })
     });
 };
-
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();

@@ -15,6 +15,10 @@ body{
     
     
 }
+main{
+    margin-left: auto;
+    margin-right: auto;
+}
 p #erreurlastName,#erreurFirstName,#erreurEmail,#erreurMessage{
 color: #911C1C !important;
 
@@ -191,8 +195,7 @@ option{
  position: relative; 
     object-fit: cover;
   padding: 0;
-  width: 900px;
-  height: 900px;
+  width: 88%;
   max-width: 1200px;
 }
 .modal .header-modal h1{
@@ -247,8 +250,8 @@ form input {
     background-color: #FAFAFA;
     border-radius:6px;
     height: 300px;
-    margin-left: 7%;
-    margin-right: 9%;
+    /* margin-left: auto;
+    margin-right: auto; */
         display: flex;
     justify-content: space-around;
     align-items: center;
@@ -262,9 +265,10 @@ width:200px;
 }
 
 /*/////////creation//////////////:*/
-.photograph-creation{
+/* .photograph-creation{
     padding-left: 3%;
-    padding-right: 8%;}
+    padding-right: 8%;
+} */
     .choice{
         position: absolute;
         display: flex;
@@ -286,14 +290,15 @@ width:200px;
     } */
  
 #galerie {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4%;
+    justify-items: center;
     border-radius: 15px;
-    width: 94%;
-    margin-left: 5%;
+    width: 100%;
+    /* margin-left: auto;
+    margin-right: auto; */
     padding-top: 6%;
-   
 }
 
 
@@ -375,10 +380,10 @@ h2 {
 } */
 
 
-#galerie,
-#galerie .galerie-case,
-#galerie img {
-    /* width: 100%; */
+
+.galerie-case img
+ {
+    width: 30%;
      object-fit: cover; 
 }
 
@@ -408,6 +413,11 @@ h2 {
 #message{
 Height:170px;
 }
+.closeIconLightbox img{
+    width: 30px;
+    height: 30px;
+    margin-left: 45%;
+}
 /* @media(max-width:1255px) {
     #galerie{
         display: flex;
@@ -415,45 +425,10 @@ Height:170px;
     justify-content: space-around    }
   
 } */
-@media(max-width:1007px) {
-   .modal-contact button {
-    margin-right: 26%;
-    padding: 0px;
-    width: 125px;
-    height: 60px;
-    font-size: 17px;
 
-   }
-   .photograph-header img {
-    width: 150px;
-    height: 150px;
-}
-.photograph-information{
-    width: 48%;
-}
-h3{
-    font-size: 17px;
-}
-}
-@media(max-width:768px){
-    .photograph-header{
-    flex-direction: column-reverse;
-    align-items: center;
-    flex-wrap: wrap;
-    height: auto;
-    margin-bottom: 9%;
-    }
-    .modal-contact button {
-        margin-right: 0px;
-        margin-top: 9%;
-        width: 170px;
-}
-.photograph-information {
-    text-align: center;
-    width: 100%;
-    
-}
-}
+
+
+
 /* @media(max-width:560px){
     .photograph-information{
         width: 65%;
@@ -461,12 +436,89 @@ h3{
     }
     
 
+}  */
+@media(max-width:1099px){
+    #galerie img{
+        width: 100%
+
+    } 
+    .galerie-case{
+        width: 80%;
+    }
+    #galerie{
+       
+       gap: 2%;
+    }
 }
-@media(max-width:560px){
-    .photograph-information{
-        width: 65%;
-        margin-left: 28%;
+
+@media(max-width:1024px){
+    #galerie{
+        grid-template-columns: repeat(2, 1fr);
+       justify-content: center;
+       gap: 4%;
+    }
+    #galerie img{
+        width: 100%
+
+    } 
+    .galerie-case{
+        width: 80%;
+    }
+}
+
+@media(max-width:1007px) {
+    .modal-contact button {
+     margin-right: 26%;
+     padding: 0px;
+     width: 125px;
+     height: 60px;
+     font-size: 17px;
+ 
+    }
+    .photograph-header img {
+     width: 150px;
+     height: 150px;
+ }
+ .photograph-information{
+     width: 48%;
+ }
+ h3{
+     font-size: 17px;
+ }
+ }
+@media(max-width:768px){
+    #galerie{
+        grid-template-columns: repeat(1, 1fr);
+       justify-content: center;
+       gap: 1%;
+       padding-top: 10%;
+    }
+    #galerie img{
+        width: 100%
+
+    } 
+    .galerie-case{
+        width: 80%;
+    }
+    .photograph-header{
+        flex-direction: column-reverse;
+        align-items: center;
+        flex-wrap: wrap;
+        height: auto;
+        margin-bottom: 9%;
+        }
+        .modal-contact button {
+            margin-right: 0px;
+            margin-top: 9%;
+            width: 170px;
     }
     
+    .photograph-information {
+        text-align: center;
+        width: 100%;
+        
+    }
+    
+    
 
-} */
+} 

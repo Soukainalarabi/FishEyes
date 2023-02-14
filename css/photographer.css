@@ -214,8 +214,7 @@ option{
     margin-top: 4%;
 }
 .imageLightbox img{
- position: relative; 
-    object-fit: cover;
+     object-fit: cover;
   padding: 0;
   width: 88%;
   max-width: 1200px;

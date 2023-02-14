@@ -1,5 +1,5 @@
 export default function sortedDropDownFactory(photographer, mediaFactory, medias) {
-    let mediaFactoryObject = mediaFactory(medias)
+    let mediaFactoryObject = mediaFactory(medias, displayModal)
     let iconBas = document.createElement("img")
     let selectOption = document.getElementById("choice-select")
     let dateButton = document.querySelector(".date")

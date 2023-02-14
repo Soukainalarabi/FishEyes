@@ -1,6 +1,17 @@
 body{
     background-color:white;
 }
+header{
+    height: 60px !important;
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    margin-left: 0!important;
+}
 
 #contact_modal {
     display: none;
@@ -23,27 +34,27 @@ p #erreurlastName,#erreurFirstName,#erreurEmail,#erreurMessage{
 color: #911C1C !important;
 
 }
-/* .contact_button{
-    color: #FFFFFF;
-    width: auto;
-    height: 61px;
-    background: #911C1C;
-    border-radius: 5px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    text-align: center
-} */
+
 .info-rectangle{
-    position: fixed;
+ position: fixed;
+ z-index: 1;
+ display: flex;
+  bottom: 0;
+  right: 10%;
+  width: 300px;
+  align-items: baseline;
+  background: #DB8876;
+  border-radius: 5px;
+
+    /* position: fixed;
     display: flex;
     height: 57px;
     width: 315px;
     right: 15%;
-    top: 95%;
+    top: 93%;
     background: #DB8876;
     border-radius: 5px;
-    padding-left: 20px;
+    padding-left: 20px; */
 }
 .info-rectangle p{
     display: flex;
@@ -59,7 +70,7 @@ color: #911C1C !important;
     margin-left: 30%;
 }
 .photograph-information{
-    width: 40%;
+    width: 29%;
 }
 #choice-select{
     z-index: 1;
@@ -83,12 +94,14 @@ background: #911C1C;
 background: #911C1C;
 border: none;
 }
-.date,.titre{
-}
+
 hr{
     width: -webkit-fill-available;
     /* width: 90px;
     margin-right: 12px; */
+}
+.contactez-moi{
+    color: #000000;
 }
 .icon-bas {
     margin-bottom: -3px;
@@ -96,15 +109,18 @@ hr{
     width: 16px;
     height: 16px;
 }
-
+.galerie-case{
+    width: 80%;
+}
 
 .pLightbox{
+ 
     position: absolute;
-    left: 27.54%;
+    left: 14%;
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 15px;
     line-height: 31px;
     color: #911C1C;
 }
@@ -123,7 +139,7 @@ hr{
 .closeIconLightbox{
     float: right;
 }
-.modal-contact button {
+.modal-contact button,.contact_button {
     font-size: 20px;
     margin-right: 40%;
     font-weight: bold;
@@ -161,8 +177,8 @@ hr{
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
-    margin-top: 5%;} 
+    margin: 5% auto;
+   } 
  
 .header-modal{
     display: flex;
@@ -171,6 +187,12 @@ hr{
     align-items: center;
     height: 80%; 
     width: 84%; 
+}
+.photograph-information h1{
+    color: #D3573C;
+}
+.photograph-information h2 {
+    color: #901C1C;
 }
 option{
     padding: 2px;
@@ -197,6 +219,7 @@ option{
   padding: 0;
   width: 88%;
   max-width: 1200px;
+  
 }
 .modal .header-modal h1{
     font-size: 64px;
@@ -250,9 +273,9 @@ form input {
     background-color: #FAFAFA;
     border-radius:6px;
     height: 300px;
-    /* margin-left: auto;
-    margin-right: auto; */
-        display: flex;
+    width: 94%;
+    margin-left: 3%;
+   display: flex;
     justify-content: space-around;
     align-items: center;
     /* padding-left: 3%;
@@ -265,34 +288,24 @@ width:200px;
 }
 
 /*/////////creation//////////////:*/
-/* .photograph-creation{
-    padding-left: 3%;
-    padding-right: 8%;
-} */
-    .choice{
-        position: absolute;
-        display: flex;
-        padding-left: 1.5%;
-        padding-top: 1%;  
-    }
+
+.choice{
+    margin-left: 3%;
+    position: absolute;
+    display: flex;
+    margin-top: 2%;
+}
     label {
         font-family: sans-serif;
         font-size: 1rem;
         padding-right: 10px;
     }
     
-    /* select{
-        color: white;
-        background: #911C1C !important;
-        font-size: 0.9rem;
-        padding: 2px 5px;
-        border-radius: 5px;
-    } */
- 
+   
 #galerie {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 4%;
+    gap: 1%;
     justify-items: center;
     border-radius: 15px;
     width: 100%;
@@ -310,7 +323,7 @@ width:200px;
      align-items: center;
     /* margin-left: 36%;   */
  }
-  .heart:hover {
+  .like:hover {
     color: #901C1C;
     transition: color 1s;
   }
@@ -437,8 +450,14 @@ Height:170px;
     
 
 }  */
-@media(max-width:1099px){
-    #galerie img{
+@media(max-width:1600px){
+    .info-rectangle{
+        right: 0;
+    }
+
+}
+@media(max-width:1194px){
+    #galerie img ,video{
         width: 100%
 
     } 
@@ -457,13 +476,20 @@ Height:170px;
        justify-content: center;
        gap: 4%;
     }
-    #galerie img{
+    header,.choice {
+        margin-left: 4%;
+    }
+    .photograph-header{
+        width: 91%;
+        margin-left: 4%;
+    }
+    /* #galerie img{
         width: 100%
 
     } 
     .galerie-case{
         width: 80%;
-    }
+    } */
 }
 
 @media(max-width:1007px) {
@@ -478,28 +504,40 @@ Height:170px;
     .photograph-header img {
      width: 150px;
      height: 150px;
+     padding-top: 9px;
  }
  .photograph-information{
-     width: 48%;
+    width: 27%;
  }
  h3{
      font-size: 17px;
  }
  }
+ @media(max-width:946px){
+    .photograph-information{
+        width: 34%;
+     }
+ }
 @media(max-width:768px){
+    .header-modal img {
+        width: 20px;
+        height: 20px;
+    }
+    .name {
+        font-size: 27px;}
     #galerie{
         grid-template-columns: repeat(1, 1fr);
        justify-content: center;
        gap: 1%;
        padding-top: 10%;
     }
-    #galerie img{
-        width: 100%
-
-    } 
-    .galerie-case{
-        width: 80%;
+    .choice {
+        margin-top: 0%;
     }
+    
+    .galerie-case{
+width: 89%;
+    } 
     .photograph-header{
         flex-direction: column-reverse;
         align-items: center;
@@ -522,3 +560,37 @@ Height:170px;
     
 
 } 
+@media (max-width: 480px){
+    #galerie {
+        padding-top: 17%;
+    }
+    .info-rectangle{
+        height: 44px;
+        width: 250px;
+    }
+    .contactez-moi {
+       font-size: 20px;
+    }
+    form label {
+       
+        font-size: 20px;
+}
+}
+@media (max-width: 340px){
+    .header-modal img {
+        width: 16px;
+    }
+    .contactez-moi {
+        font-size: 18px;
+    }
+    .header-modal {
+       
+        align-items: baseline;
+}
+.name {
+    font-size: 22px;
+}
+ .contact_button{
+    width: auto;
+ }
+}

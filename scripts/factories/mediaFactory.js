@@ -28,65 +28,63 @@ export default function mediaFactory(medias) {
                 return compare(m1.likes, m2.likes)
             })
         }
-        medias.forEach((mediaPhotographer, index) => {
-            const image = `assets/images/${photographer.name}/${mediaPhotographer.image}`
-            const videos = `assets/images/${photographer.name}/${mediaPhotographer.video}`;
-            let galerieCase = document.createElement("div")
-            let like = document.createElement("div")
-            const img = document.createElement('img');
-            const video = document.createElement('video');
-            const source = document.createElement('source');
-            const heart = document.createElement("div")
-            let lightbox = document.createElement("a")
-            heart.setAttribute("class", "heart")
-            galerieCase.setAttribute("class", "galerie-case")
-            lightbox.setAttribute("href", "#")
-            like.setAttribute("class", "like")
-            galeries.appendChild(galerieCase);
-            galerieCase.appendChild(lightbox);
-            let imageVideoDom = () => { //afficher tous les images videos dans le body
-                if (mediaPhotographer.image) {
-                    img.setAttribute("src", image)
-                    img.setAttribute("alt", mediaPhotographer.title)
-                    lightbox.appendChild(img);
-                    img.addEventListener("click", () => {
-                        lightboxFactoryObject.imageAffichage(photographer, mediaPhotographer, index)
-                    })
-                } else {
-                    source.setAttribute("src", videos)
-                    source.setAttribute("type", "video/mp4")
-                    video.setAttribute("controls", "")
-                    video.appendChild(source);
-                    lightbox.appendChild(video);
-                    video.addEventListener("play", () => {
-
-                        lightboxFactoryObject.videoAffichage(photographer, mediaPhotographer, index)
-                    })
+        medias.map(data => new Media(data))
+            .forEach((mediaPhotographer, index) => {
+                let galerieCase = document.createElement("div")
+                let like = document.createElement("div")
+                const img = document.createElement('img');
+                const video = document.createElement('video');
+                const source = document.createElement('source');
+                const heart = document.createElement("div")
+                let lightbox = document.createElement("a")
+                heart.setAttribute("class", "heart")
+                galerieCase.setAttribute("class", "galerie-case")
+                lightbox.setAttribute("href", "#")
+                like.setAttribute("class", "like")
+                galeries.appendChild(galerieCase);
+                galerieCase.appendChild(lightbox);
+                let imageVideoDom = () => { //afficher tous les images videos dans le body
+                    if (mediaPhotographer.image) {
+                        img.setAttribute("src", mediaPhotographer.getImageUrl(photographer.name))
+                        img.setAttribute("alt", mediaPhotographer.title)
+                        lightbox.appendChild(img);
+                        img.addEventListener("click", () => {
+                            lightboxFactoryObject.imageAffichage(photographer, mediaPhotographer, index)
+                        })
+                    } else {
+                        source.setAttribute("src", mediaPhotographer.getVideoUrl(photographer.name))
+                        source.setAttribute("type", "video/mp4")
+                        video.setAttribute("controls", "")
+                        video.appendChild(source);
+                        lightbox.appendChild(video);
+                        video.addEventListener("play", () => {
+                            lightboxFactoryObject.videoAffichage(photographer, mediaPhotographer, index)
+                        })
+                    }
                 }
-            }
-            imageVideoDom()
-            const pTitle = document.createElement('p');
-            const numberLikes = document.createElement("div")
-            const heart1 = document.createElement("div")
-            galerieCase.appendChild(like);
-            numberLikes.setAttribute("class", "numberLikes")
-            heart1.setAttribute("class", "heart1")
-            like.appendChild(pTitle);
-            like.appendChild(heart);
-            heart.appendChild(numberLikes);
-            heart.appendChild(heart1);
-            numberLikes.textContent = mediaPhotographer.likes
-            pTitle.textContent = mediaPhotographer.title
-            heart1.innerHTML = `<i class="fas fa-heart fa-2x"></i>`
-            heart.addEventListener("click", () => {
-                numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
-                let sommeLike = document.querySelector(".sommeLike")
-                let somme = parseInt(sommeLike.textContent)
-                sommeLike.textContent = somme + 1
-                like.style.color = "#901C1C"
-            })
+                imageVideoDom()
+                const pTitle = document.createElement('p');
+                const numberLikes = document.createElement("div")
+                const heart1 = document.createElement("div")
+                galerieCase.appendChild(like);
+                numberLikes.setAttribute("class", "numberLikes")
+                heart1.setAttribute("class", "heart1")
+                like.appendChild(pTitle);
+                like.appendChild(heart);
+                heart.appendChild(numberLikes);
+                heart.appendChild(heart1);
+                numberLikes.textContent = mediaPhotographer.likes
+                pTitle.textContent = mediaPhotographer.title
+                heart1.innerHTML = `<i class="fas fa-heart fa-2x"></i>`
+                heart.addEventListener("click", () => {
+                    numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
+                    let sommeLike = document.querySelector(".sommeLike")
+                    let somme = parseInt(sommeLike.textContent)
+                    sommeLike.textContent = somme + 1
+                    like.style.color = "#901C1C"
+                })
 
-        });
+            });
 
     }
     return { showMedias }

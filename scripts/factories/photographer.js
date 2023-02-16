@@ -1,6 +1,8 @@
 function photographerFactory(data) {
-    const { name, portrait, price, id, country, tagline, city } = data;
-    const picture = `assets/photographers/${portrait}`;
+    const photographer = new Photographer(data)
+    // const { name, portrait, price, id, country, tagline, city } = data;
+    // const picture = assets / photographers / photographer.portrait;
+    const id = photographer.id
     const article = document.createElement('article');
     const divCard = document.createElement('div');
     const link = document.createElement('a')
@@ -14,25 +16,20 @@ function photographerFactory(data) {
         divCard.setAttribute("class", "information-photographer")
         divCard.setAttribute("aria-label", "information sur le photographe")
         link.setAttribute("href", "#")
-        img.setAttribute("src", picture)
+        img.setAttribute("src", photographer.picture)
         img.setAttribute("alt", "")
-        // img.setAttribute("alt", `image du photographe ${name}`
-        // )
-        h2.textContent = name;
+        h2.textContent = photographer.name;
         article.appendChild(link);
         link.appendChild(img);
         link.appendChild(h2);
         article.appendChild(divCard)
-        h3.textContent = city.concat(", ", country)
+        h3.textContent = photographer.city.concat(", ", photographer.country)
         divCard.appendChild(h3)
-        h4.textContent = tagline
+        h4.textContent = photographer.tagline
         divCard.appendChild(h4)
-        pPrice.textContent = price + "€/jour"
+        pPrice.textContent = photographer.price + "€/jour"
         divCard.appendChild(pPrice)
         return (article);
-
-
     }
-
     return { id, getUserCardDOM }
 }

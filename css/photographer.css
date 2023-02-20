@@ -97,8 +97,9 @@ border: none;
 
 hr{
     width: -webkit-fill-available;
-    /* width: 90px;
-    margin-right: 12px; */
+}
+hr ,.date,.titre{
+    display: none;
 }
 .contactez-moi{
     color: #000000;
@@ -114,28 +115,20 @@ hr{
 }
 
 .pLightbox{
- 
-    position: absolute;
-    left: 14%;
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 31px;
-    color: #911C1C;
+    text-align: start;
+    margin-left: 10%;font-family: 'DM Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 31px;
+color: #911C1C;
 }
 .container {
     margin: auto;
-    /* margin-left: 3%;
-    margin-right: 3%; */
+   
     max-width: 1350px;
   }
-/* .photograph-header {
-    background-color: #FAFAFA;
-    border-radius:6px;
-    height: 300px;
-    margin: 0 100px;
-} */
+
 .closeIconLightbox{
     float: right;
 }
@@ -213,12 +206,28 @@ option{
     justify-content: space-between;
     margin-top: 4%;
 }
+.icon-dropDown{
+    display: inline;
+}
 .imageLightbox img{
      object-fit: cover;
   padding: 0;
-  width: 88%;
+  width: 80%;
+  height: 900px;
   max-width: 1200px;
   
+}
+.imageLightbox video{
+    object-fit: cover;
+ padding: 0;
+ width: 80%;
+ height: 900px;
+ max-width: 1200px;
+ 
+}
+.previous-image img,.next-image img {
+    width: 42px;
+    height: 42px;
 }
 .modal .header-modal h1{
     font-size: 64px;
@@ -482,15 +491,15 @@ Height:170px;
         width: 91%;
         margin-left: 4%;
     }
-    /* #galerie img{
-        width: 100%
-
-    } 
-    .galerie-case{
-        width: 80%;
+    .pLightbox {
+        text-align: center;
+        margin-left: 0;
+        font-size: 20px;
+    }
+    /* .imageLightbox img, .imageLightbox video{
+      height: 300px;
     } */
 }
-
 @media(max-width:1007px) {
     .modal-contact button {
      margin-right: 26%;

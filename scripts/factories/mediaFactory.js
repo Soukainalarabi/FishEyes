@@ -51,6 +51,12 @@ export default function mediaFactory(medias) {
                         img.addEventListener("click", () => {
                             lightboxFactoryObject.imageAffichage(photographer, mediaPhotographer, index)
                         })
+                        //ici on doit faire un evenement keyup
+                        galerieCase.addEventListener("keyup", (e) => {
+                            if (e.key == 'Enter') {
+                                lightboxFactoryObject.imageAffichage(photographer, mediaPhotographer, index)
+                            }
+                        });
                     } else {
                         source.setAttribute("src", mediaPhotographer.getVideoUrl(photographer.name))
                         source.setAttribute("type", "video/mp4")
@@ -60,6 +66,11 @@ export default function mediaFactory(medias) {
                         video.addEventListener("play", () => {
                             lightboxFactoryObject.videoAffichage(photographer, mediaPhotographer, index)
                         })
+                        galerieCase.addEventListener("keyup", (e) => {
+                            if (e.key == 'Enter') {
+                                lightboxFactoryObject.videoAffichage(photographer, mediaPhotographer, index)
+                            }
+                        });
                     }
                 }
                 imageVideoDom()

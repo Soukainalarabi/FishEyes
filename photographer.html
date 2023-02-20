@@ -12,7 +12,6 @@
 
 <body>
   <div class="container">
-
     <header aria-label=”banner”>
       <img src="assets/images/logo.png" alt="logo" class="logo" />
     </header>
@@ -25,18 +24,9 @@
           <button>Contactez-moi</button>
         </a>
       </div>
-
-
       <div class="photograph-creation">
         <div class="choice" display="flex">
           <label for="choice-select">Trier par:</label>
-
-          <!-- <select id="choice-select" aria-haspopup="true" aria-expanded="false">
-            <option value="par defaut">par défaut</option>
-            <option value="popularite">Popularité</option>
-            <option value="date">Date</option>
-            <option value="titre">Titre</option>
-          </select>  -->
           <div id="choice-select">
             <button class="popularite" value="popularite" aria-label="trier par popularité">Popularité
             </button>
@@ -44,13 +34,11 @@
             <button class="date" value="date" aria-label="trier par date">Date
             </button>
             <hr class="ligne2">
-
             <button class="titre" value="titre" aria-label="trier par titre">Titre
             </button>
           </div>
         </div>
         <div id="galerie">
-
         </div>
       </div>
       <div class="info-rectangle"> </div>
@@ -60,7 +48,7 @@
         <div class="header-modal">
           <h1 class="contactez-moi">Contactez-moi</h1>
           <a class="close-modalContact" href="#">
-            <img src="assets/icons/close.svg" alt="fermer la modale" onclick="closeModal()" />
+            <img src="assets/icons/close.svg" alt="fermer la modale" onclick="closeModal(true)" />
           </a>
         </div>
         <div class="name"></div>
@@ -94,11 +82,7 @@
             <img src="assets/icons/iconsred.png" alt="fermer la modale" onclick="closeModal()" />
           </a>
         </div>
-
         <div class="modalLightboxBody"></div>
-
-
-
       </div>
     </div>
   </div>

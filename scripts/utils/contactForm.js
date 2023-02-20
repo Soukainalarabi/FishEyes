@@ -1,5 +1,6 @@
 const modal = document.getElementById("contact_modal")
 let name = document.querySelector(".name")
+let iconClose = document.querySelector(".close-modalContact")
 ///formulaire Contact
 let form = document.querySelector("form")
 let firstName = document.getElementById("first")
@@ -36,7 +37,12 @@ let displayModal = (modalContact) => {
 let closeModal = () => {
     modal.style.display = "none";
 }
+iconClose.addEventListener("keyup", (e) => {
 
+    if (e.key == 'Enter') {
+        closeModal(true)
+    }
+});
 // lien vers la page d'accueil
 let allPhotographers = document.querySelector(".logo")
 allPhotographers.addEventListener("click", () => {

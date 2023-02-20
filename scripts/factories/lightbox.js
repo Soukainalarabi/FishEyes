@@ -1,4 +1,5 @@
 export default function lightboxFactory(medias, displayModal) {
+    let linkCloseLightbox = document.querySelector(".close-modallightbox")
     let imageAffichage = (photographer, media, index) => {
         let linkImageSuivant = document.createElement("a")
         let imageDivLightbox = document.createElement("div")
@@ -20,8 +21,6 @@ export default function lightboxFactory(medias, displayModal) {
         linkImagePrecedent.appendChild(iconPrecedent)
         iconPrecedent.setAttribute("src", "assets/icons/precedent.png")
         iconPrecedent.setAttribute("alt", "icon précedent")
-        iconPrecedent.style.width = "42px"
-        iconPrecedent.style.height = "42px"
         imageDivLightbox.setAttribute("class", "imageLightbox")
         modalLightbox.appendChild(imageDivLightbox)
         imageLightbox.setAttribute("src", image)
@@ -35,8 +34,6 @@ export default function lightboxFactory(medias, displayModal) {
         linkImageSuivant.setAttribute("class", "next-image")
         linkImageSuivant.setAttribute("href", "#")
         linkImageSuivant.appendChild(iconSuivant)
-        iconSuivant.style.width = "42px"
-        iconSuivant.style.height = "42px"
         modalLightbox.appendChild(pLightbox)
         iconSuivant.addEventListener("click", () => {
             mediaSuivant(photographer, index)
@@ -57,6 +54,12 @@ export default function lightboxFactory(medias, displayModal) {
 
             if (e.key == 'Enter') {
                 mediaSuivant(photographer, index)
+            }
+        });
+        linkCloseLightbox.addEventListener("keyup", (e) => {
+
+            if (e.key == 'Enter') {
+                closeModal(true)
             }
         });
         displayModal(false)
@@ -84,8 +87,6 @@ export default function lightboxFactory(medias, displayModal) {
         linkImagePrecedent.appendChild(iconPrecedent)
         iconPrecedent.setAttribute("src", "assets/icons/precedent.png")
         iconPrecedent.setAttribute("alt", "icon précedent")
-        iconPrecedent.style.width = "42px"
-        iconPrecedent.style.height = "42px"
         imageDivLightbox.setAttribute("class", "imageLightbox")
         modalLightbox.appendChild(imageDivLightbox)
         sourceLightbox.setAttribute("src", videos)
@@ -101,8 +102,6 @@ export default function lightboxFactory(medias, displayModal) {
         linkImageSuivant.setAttribute("class", "next-image")
         linkImageSuivant.setAttribute("href", "#")
         linkImageSuivant.appendChild(iconSuivant)
-        iconSuivant.style.width = "42px"
-        iconSuivant.style.height = "42px"
         modalLightbox.appendChild(pLightbox)
         iconSuivant.addEventListener("click", () => {
             mediaSuivant(photographer, index)
@@ -123,6 +122,12 @@ export default function lightboxFactory(medias, displayModal) {
 
             if (e.key == 'Enter') {
                 mediaSuivant(photographer, index)
+            }
+        });
+        linkCloseLightbox.addEventListener("keyup", (e) => {
+
+            if (e.key == 'Enter') {
+                closeModal(true)
             }
         });
         displayModal(false)

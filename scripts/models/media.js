@@ -33,6 +33,9 @@ class Media {
     get likes() {
         return this._likes
     }
+    set likes(likes) {
+        this._likes = likes
+    }
     get date() {
         return this._date
     }

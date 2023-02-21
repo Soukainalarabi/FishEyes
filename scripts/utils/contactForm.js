@@ -37,6 +37,9 @@ let displayModal = (modalContact) => {
 let closeModal = () => {
     modal.style.display = "none";
 }
+iconClose.addEventListener("click", () => {
+    closeModal(true)
+})
 iconClose.addEventListener("keyup", (e) => {
 
     if (e.key == 'Enter') {

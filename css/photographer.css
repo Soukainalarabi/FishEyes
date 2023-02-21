@@ -62,6 +62,7 @@ color: #911C1C !important;
     margin-left: 20px;
     
 }
+
 .heart2{
     margin-top: 20px;
     margin-left: 5px;
@@ -94,7 +95,9 @@ background: #911C1C;
 background: #911C1C;
 border: none;
 }
-
+#choice{
+    display: none;
+}
 hr{
     width: -webkit-fill-available;
 }
@@ -212,19 +215,20 @@ option{
 .imageLightbox img{
      object-fit: cover;
   padding: 0;
-  width: 80%;
+  width: 72%;
   height: 900px;
   max-width: 1200px;
   
 }
 .imageLightbox video{
-    object-fit: cover;
+object-fit: cover;
  padding: 0;
  width: 80%;
  height: 900px;
  max-width: 1200px;
  
 }
+
 .previous-image img,.next-image img {
     width: 42px;
     height: 42px;
@@ -428,7 +432,7 @@ h2 {
     height: 300px;
     width: 350px;
     border-radius: 5px;
-    /* object-fit: cover; */
+     object-fit: cover; 
    
 }
 #message{

@@ -38,15 +38,20 @@ export default function mediaFactory(medias) {
                 const heart = document.createElement("div")
                 let lightbox = document.createElement("a")
                 heart.setAttribute("class", "heart")
+                heart.setAttribute("aria-label", `Bouton pour liker la publication nommée ${mediaPhotographer.title}`
+                )
                 galerieCase.setAttribute("class", "galerie-case")
                 lightbox.setAttribute("href", "#")
+                lightbox.setAttribute("role", "link")
+                lightbox.setAttribute("aria-label", `media ${photographer.name}`)
                 like.setAttribute("class", "like")
                 galeries.appendChild(galerieCase);
                 galerieCase.appendChild(lightbox);
                 let imageVideoDom = () => { //afficher tous les images videos dans le body
                     if (mediaPhotographer.image) {
                         img.setAttribute("src", mediaPhotographer.getImageUrl(photographer.name))
-                        img.setAttribute("alt", mediaPhotographer.title)
+                        img.setAttribute("alt", ` media nommée ${mediaPhotographer.title}`
+                        )
                         lightbox.appendChild(img);
                         img.addEventListener("click", () => {
                             lightboxFactoryObject.imageAffichage(photographer, mediaPhotographer, index)
@@ -60,7 +65,8 @@ export default function mediaFactory(medias) {
                     } else {
                         source.setAttribute("src", mediaPhotographer.getVideoUrl(photographer.name))
                         source.setAttribute("type", "video/mp4")
-                        video.setAttribute("controls", "")
+                        video.setAttribute("controls", "true")
+                        video.setAttribute("alt", `media nommée ${mediaPhotographer.title}`)
                         video.appendChild(source);
                         lightbox.appendChild(video);
                         video.addEventListener("play", () => {
@@ -88,11 +94,18 @@ export default function mediaFactory(medias) {
                 pTitle.textContent = mediaPhotographer.title
                 heart1.innerHTML = `<i class="fas fa-heart fa-2x"></i>`
                 heart.addEventListener("click", () => {
-                    numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
-                    let sommeLike = document.querySelector(".sommeLike")
-                    let somme = parseInt(sommeLike.textContent)
-                    sommeLike.textContent = somme + 1
-                    like.style.color = "#901C1C"
+                    if (numberLikes.textContent == parseInt(+mediaPhotographer.likes)) {
+                        numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
+                        let sommeLike = document.querySelector(".sommeLike")
+                        let somme = parseInt(sommeLike.textContent)
+                        sommeLike.textContent = somme + 1
+                        like.style.color = "#901C1C"
+                    } if (numberLikes.textContent == parseInt(++mediaPhotographer.likes)) {
+                        return
+                    }
+
+
+
                 })
 
             });

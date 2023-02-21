@@ -1,7 +1,6 @@
 import getPhotographers from "../utils/photographers-service.js"
 import mediaFactory from "../factories/mediaFactory.js"
 import sortedDropDownFactory from "../factories/sortedDropDown.js"
-
 let getIdFromParam = () => {
     const queryString = window.location.search; // récuperer l'url depuis la page
     const urlParams = new URLSearchParams(queryString); // construire
@@ -19,9 +18,9 @@ for (let i = 0; i < arrayLikes.length; i++) {
 }
 let infoRectangle = document.querySelector(".info-rectangle")
 let showPhotographerDom = (photographer) => {
-    // if (!photographer) {
-    //     window.location.href = '/index.html'
-    // }
+    if (!photographer) {
+        window.location.href = '/index.html'
+    }
     const picture = `assets/photographers/${photographer.portrait}`;
     let photographerHeader = document.querySelector(".photograph-header")
     let photographerInfo = document.querySelector(".photograph-information")

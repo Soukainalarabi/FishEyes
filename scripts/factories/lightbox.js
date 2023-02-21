@@ -21,6 +21,7 @@ export default function lightboxFactory(medias, displayModal) {
         linkImagePrecedent.appendChild(iconPrecedent)
         iconPrecedent.setAttribute("src", "assets/icons/precedent.png")
         iconPrecedent.setAttribute("alt", "icon précedent")
+        iconPrecedent.setAttribute("aria-label", "passer à la publication précédente")
         imageDivLightbox.setAttribute("class", "imageLightbox")
         modalLightbox.appendChild(imageDivLightbox)
         imageLightbox.setAttribute("src", image)
@@ -31,6 +32,7 @@ export default function lightboxFactory(medias, displayModal) {
         imageDivLightbox.appendChild(linkImageSuivant)
         iconSuivant.setAttribute("src", "assets/icons/suivant.png")
         iconSuivant.setAttribute("alt", "icon suivant")
+        iconSuivant.setAttribute("aria-label", "passer à la publication suivante")
         linkImageSuivant.setAttribute("class", "next-image")
         linkImageSuivant.setAttribute("href", "#")
         linkImageSuivant.appendChild(iconSuivant)
@@ -43,16 +45,32 @@ export default function lightboxFactory(medias, displayModal) {
 
 
         })
+        linkCloseLightbox.addEventListener("click", () => {
+            closeModal(true)
+        })
         linkImagePrecedent.addEventListener("keyup", (e) => {
-
-            if (e.key == 'Enter') {
+            console.log(e.key);
+            if (e.key == 'Enter' || e.key == "ArrowLeft") {
                 mediaPrecedent(photographer, index)
 
             }
         });
-        linkImageSuivant.addEventListener("keyup", (e) => {
+        // linkImagePrecedent.addEventListener("keyup", (e) => {
 
-            if (e.key == 'Enter') {
+        //     if (e.key == 'Enter') {
+        //         mediaPrecedent(photographer, index)
+
+        //     }
+        // });
+        // linkImageSuivant.addEventListener("keyup", (e) => {
+
+        //     if (e.key == 'Enter') {
+        //         mediaSuivant(photographer, index)
+        //     }
+        // });
+        linkImageSuivant.addEventListener("keyup", (e) => {
+            console.log(e.key);
+            if (e.key == 'Enter' || e.key == "ArrowRight") {
                 mediaSuivant(photographer, index)
             }
         });

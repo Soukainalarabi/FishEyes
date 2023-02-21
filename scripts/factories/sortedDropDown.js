@@ -59,7 +59,8 @@ export default function sortedDropDownFactory(photographer, mediaFactory, medias
         linkIconBas.setAttribute("href", "#")
         iconBas.setAttribute("class", "icon-bas")
         iconBas.setAttribute("src", "assets/icons/icons8-chevron-droit-16.png")
-        iconBas.setAttribute("alt", "vers le bas")
+        iconBas.setAttribute("aria-label", "icon pour ouvrir le menu déroulant")
+        iconBas.setAttribute("alt", "icon vers le bas")
         populariteButton.appendChild(linkIconBas)
         linkIconBas.appendChild(iconBas)
     }

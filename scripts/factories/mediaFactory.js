@@ -42,7 +42,7 @@ export default function mediaFactory(medias) {
                 )
                 galerieCase.setAttribute("class", "galerie-case")
                 lightbox.setAttribute("href", "#")
-                lightbox.setAttribute("role", "link")
+                lightbox.setAttribute("role", "lien")
                 lightbox.setAttribute("aria-label", `media ${photographer.name}`)
                 like.setAttribute("class", "like")
                 galeries.appendChild(galerieCase);
@@ -100,8 +100,10 @@ export default function mediaFactory(medias) {
                         let somme = parseInt(sommeLike.textContent)
                         sommeLike.textContent = somme + 1
                         like.style.color = "#901C1C"
+                        // numberLikes.textContent = parseInt(--mediaPhotographer.likes) 
+                        // sommeLike.textContent = somme - 1
                     } if (numberLikes.textContent == parseInt(++mediaPhotographer.likes)) {
-                        return
+                        return 
                     }
 
 

@@ -2,8 +2,8 @@
 <html lang="fr">
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -20,8 +20,9 @@
         <div class="photograph-information">
 
         </div>
-        <a class="modal-contact" href="#" role="link" onclick="displayModal(true)">
-          <button aria-label="Bouton pour ouvrir le formulaire du contact">Contactez-moi</button>
+        <a class="modal-contact" href="#" role="lien">
+          <input class="contact" type="button" aria-label="Bouton pour ouvrir le formulaire du contact"
+            value="Contactez-moi">
         </a>
       </div>
       <div class="photograph-creation">
@@ -29,13 +30,13 @@
           <label for="choice">Trier par:</label>
           <input type="text" name="trier" id="choice">
           <div id="choice-select" role="listbox">
-            <button class="popularite" value="popularite" aria-label="trier par popularité">Popularité
+            <button class="popularite" type="button" value="popularite" aria-label="trier par popularité">Popularité
             </button>
             <hr class="ligne1">
-            <button class="date" value="date" aria-label="trier par date">Date
+            <button class="date" type="button" value="date" aria-label="trier par date">Date
             </button>
             <hr class="ligne2">
-            <button class="titre" value="titre" aria-label="trier par titre">Titre
+            <button class="titre" type="button" value="titre" aria-label="trier par titre">Titre
             </button>
           </div>
         </div>

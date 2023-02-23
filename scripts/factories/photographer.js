@@ -16,6 +16,8 @@ function photographerFactory(data) {
         divCard.setAttribute("class", "information-photographer")
         divCard.setAttribute("aria-label", "information sur le photographe")
         link.setAttribute("href", "#")
+        link.setAttribute("role", "lien")
+
         img.setAttribute("src", photographer.picture)
         img.setAttribute("alt", "")
         h2.textContent = photographer.name;

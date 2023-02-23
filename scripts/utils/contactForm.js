@@ -1,6 +1,7 @@
 const modal = document.getElementById("contact_modal")
 let name = document.querySelector(".name")
 let iconClose = document.querySelector(".close-modalContact")
+let modalContact = document.querySelector(".modal-contact")
 ///formulaire Contact
 let form = document.querySelector("form")
 let firstName = document.getElementById("first")
@@ -39,6 +40,9 @@ let closeModal = () => {
 }
 iconClose.addEventListener("click", () => {
     closeModal(true)
+})
+modalContact.addEventListener("click", () => {
+    displayModal(true)
 })
 iconClose.addEventListener("keyup", (e) => {
 

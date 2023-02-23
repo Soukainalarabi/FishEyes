@@ -50,27 +50,16 @@ export default function lightboxFactory(medias, displayModal) {
         })
         linkImagePrecedent.addEventListener("keyup", (e) => {
             console.log(e.key);
-            if (e.key == 'Enter' || e.key == "ArrowLeft") {
+
+            if (e.key == "ArrowLeft" || e.key == "Enter") {
+
                 mediaPrecedent(photographer, index)
 
             }
         });
-        // linkImagePrecedent.addEventListener("keyup", (e) => {
-
-        //     if (e.key == 'Enter') {
-        //         mediaPrecedent(photographer, index)
-
-        //     }
-        // });
-        // linkImageSuivant.addEventListener("keyup", (e) => {
-
-        //     if (e.key == 'Enter') {
-        //         mediaSuivant(photographer, index)
-        //     }
-        // });
         linkImageSuivant.addEventListener("keyup", (e) => {
             console.log(e.key);
-            if (e.key == 'Enter' || e.key == "ArrowRight") {
+            if (e.key == "ArrowRight" || e.key == "Enter") {
                 mediaSuivant(photographer, index)
             }
         });

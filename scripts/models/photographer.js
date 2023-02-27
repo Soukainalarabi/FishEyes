@@ -27,7 +27,7 @@ export default class Photographer {
         return this._price
     }
     get picture() {
-        return `/assets/photographers/${this._portrait}`
+        return `assets/photographers/${this._portrait}`
     }
 
 }

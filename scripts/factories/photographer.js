@@ -10,6 +10,8 @@ export default function photographerFactory(data) {
     const h3 = document.createElement('h3')
     const h4 = document.createElement('h4')
     const pPrice = document.createElement('p')
+    console.log(photographer.picture);
+
     function getUserCardDOM() {
         article.setAttribute("aria-label", "carte photographer")
         divCard.setAttribute("class", "information-photographer")

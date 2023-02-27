@@ -1,4 +1,5 @@
 import getPhotographers from "../utils/photographers-service.js"
+import photographerFactory from "../factories/photographer.js"
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -11,12 +12,12 @@ async function displayData(photographers) {
             window.location.href = `photographer.html?id=${identifiant}`
         })
     });
-};
+}
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
-};
+}
 
 init();
 

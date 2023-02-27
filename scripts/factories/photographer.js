@@ -1,7 +1,6 @@
-function photographerFactory(data) {
+import Photographer from "../models/photographer.js"
+export default function photographerFactory(data) {
     const photographer = new Photographer(data)
-    // const { name, portrait, price, id, country, tagline, city } = data;
-    // const picture = assets / photographers / photographer.portrait;
     const id = photographer.id
     const article = document.createElement('article');
     const divCard = document.createElement('div');
@@ -17,7 +16,6 @@ function photographerFactory(data) {
         divCard.setAttribute("aria-label", "information sur le photographe")
         link.setAttribute("href", "#")
         link.setAttribute("role", "lien")
-
         img.setAttribute("src", photographer.picture)
         img.setAttribute("alt", "")
         h2.textContent = photographer.name;

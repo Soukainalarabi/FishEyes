@@ -1,6 +1,8 @@
 import lightboxFactory from "../factories/lightbox.js"
+import { closeModal, displayModal } from "../pages/modal.js"
+import Media from "../models/media.js"
 export default function mediaFactory(medias) {
-    let lightboxFactoryObject = lightboxFactory(medias, displayModal)
+    let lightboxFactoryObject = lightboxFactory(medias, displayModal, closeModal)
     let showMedias = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
         let galeries = document.getElementById("galerie")
         galeries.innerHTML = ""
@@ -37,9 +39,11 @@ export default function mediaFactory(medias) {
                 const source = document.createElement('source');
                 const heart = document.createElement("div")
                 let lightbox = document.createElement("a")
+                const pTitle = document.createElement('p');
+                const numberLikes = document.createElement("div")
+                const heart1 = document.createElement("div")
                 heart.setAttribute("class", "heart")
-                heart.setAttribute("aria-label", `Bouton pour liker la publication nommée ${mediaPhotographer.title}`
-                )
+                heart.setAttribute("aria-label", `Bouton pour liker la publication nommée ${mediaPhotographer.title}`)
                 galerieCase.setAttribute("class", "galerie-case")
                 lightbox.setAttribute("href", "#")
                 lightbox.setAttribute("role", "lien")
@@ -47,7 +51,14 @@ export default function mediaFactory(medias) {
                 like.setAttribute("class", "like")
                 galeries.appendChild(galerieCase);
                 galerieCase.appendChild(lightbox);
-                let imageVideoDom = () => { //afficher tous les images videos dans le body
+                numberLikes.setAttribute("class", "numberLikes")
+                heart1.setAttribute("class", "heart1")
+                galerieCase.appendChild(like);
+                like.appendChild(pTitle);
+                like.appendChild(heart);
+                heart.appendChild(numberLikes);
+                heart.appendChild(heart1);
+                let imageVideoDom = () => {
                     if (mediaPhotographer.image) {
                         img.setAttribute("src", mediaPhotographer.getImageUrl(photographer.name))
                         img.setAttribute("alt", ` media nommée ${mediaPhotographer.title}`
@@ -56,12 +67,6 @@ export default function mediaFactory(medias) {
                         img.addEventListener("click", () => {
                             lightboxFactoryObject.imageAffichage(photographer, mediaPhotographer, index)
                         })
-                        //ici on doit faire un evenement keyup
-                        galerieCase.addEventListener("keyup", (e) => {
-                            if (e.key == 'Enter') {
-                                lightboxFactoryObject.imageAffichage(photographer, mediaPhotographer, index)
-                            }
-                        });
                     } else {
                         source.setAttribute("src", mediaPhotographer.getVideoUrl(photographer.name))
                         source.setAttribute("type", "video/mp4")
@@ -72,46 +77,30 @@ export default function mediaFactory(medias) {
                         video.addEventListener("play", () => {
                             lightboxFactoryObject.videoAffichage(photographer, mediaPhotographer, index)
                         })
-                        galerieCase.addEventListener("keyup", (e) => {
-                            if (e.key == 'Enter') {
-                                lightboxFactoryObject.videoAffichage(photographer, mediaPhotographer, index)
-                            }
-                        });
                     }
+                    galerieCase.addEventListener("keyup", (e) => {
+                        if (e.key == 'Enter') {
+                            lightboxFactoryObject.videoAffichage(photographer, mediaPhotographer, index)
+                        }
+                    });
                 }
                 imageVideoDom()
-                const pTitle = document.createElement('p');
-                const numberLikes = document.createElement("div")
-                const heart1 = document.createElement("div")
-                galerieCase.appendChild(like);
-                numberLikes.setAttribute("class", "numberLikes")
-                heart1.setAttribute("class", "heart1")
-                like.appendChild(pTitle);
-                like.appendChild(heart);
-                heart.appendChild(numberLikes);
-                heart.appendChild(heart1);
                 numberLikes.textContent = mediaPhotographer.likes
                 pTitle.textContent = mediaPhotographer.title
                 heart1.innerHTML = `<i class="fas fa-heart fa-2x"></i>`
                 heart.addEventListener("click", () => {
-                    if (numberLikes.textContent == parseInt(+mediaPhotographer.likes)) {
+                    if (numberLikes.textContent == parseInt(+mediaPhotographer.likes)) { //si numberLike=la valeur initiale de nombre de like du media
                         numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
                         let sommeLike = document.querySelector(".sommeLike")
                         let somme = parseInt(sommeLike.textContent)
                         sommeLike.textContent = somme + 1
                         like.style.color = "#901C1C"
-                        // numberLikes.textContent = parseInt(--mediaPhotographer.likes) 
-                        // sommeLike.textContent = somme - 1
-                    } if (numberLikes.textContent == parseInt(++mediaPhotographer.likes)) {
-                        return 
+
+                    } if (numberLikes.textContent == parseInt(++mediaPhotographer.likes)) { //si numberLike=la valeur initiale de nombre de like du media +1
+                        return
                     }
-
-
-
                 })
-
             });
-
     }
     return { showMedias }
 }

@@ -1,4 +1,4 @@
-class Media {
+export default class Media {
     constructor(mediaJson) {
         this._id = mediaJson.id
         this._photographerId = mediaJson.photographerId
@@ -33,7 +33,7 @@ class Media {
     get likes() {
         return this._likes
     }
-    
+
     set likes(likes) {
         this._likes = likes
     }

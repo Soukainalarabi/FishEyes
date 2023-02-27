@@ -1,13 +1,21 @@
 import getPhotographers from "../utils/photographers-service.js"
 import mediaFactory from "../factories/mediaFactory.js"
-import sortedDropDownFactory from "../factories/sortedDropDown.js"
+import trieMediaFactory from "../factories/trieMedia.js"
+
 let getIdFromParam = () => {
     const queryString = window.location.search; // récuperer l'url depuis la page
     const urlParams = new URLSearchParams(queryString); // construire
     return urlParams.get("id");
 }
 const identifiant = getIdFromParam()// elle renvoie une chaine de caractere pas un number
-const photographers = await getPhotographers();
+let photographers = await getPhotographers();
+
+// await (async () => {
+//     photographers = await getPhotographers();
+
+//     // all of the script.... 
+
+// })();
 let somme = 0
 let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
 const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
@@ -51,7 +59,7 @@ let showPhotographerDom = (photographer) => {
     img.setAttribute("src", picture)
     img.setAttribute("alt", `image du photographe ${photographer.name}`)
 }
-sortedDropDownFactory(photographer, mediaFactory, mediaFilter).affichageMenuSelect()
+trieMediaFactory(photographer, mediaFactory, mediaFilter).affichageMenuSelect()
 showPhotographerDom(photographer)
 
 

@@ -1,4 +1,4 @@
-class Photographer {
+export default class Photographer {
     constructor(photographerJson) {
         this._name = photographerJson.name
         this._id = photographerJson.id
@@ -6,7 +6,7 @@ class Photographer {
         this._country = photographerJson.country
         this._tagline = photographerJson.tagline
         this._price = photographerJson.price
-        this._portrait=photographerJson.portrait
+        this._portrait = photographerJson.portrait
     }
     get name() {
         return this._name
@@ -29,5 +29,5 @@ class Photographer {
     get picture() {
         return `/assets/photographers/${this._portrait}`
     }
-    
+
 }

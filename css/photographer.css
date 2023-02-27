@@ -102,7 +102,7 @@ hr{
     width: -webkit-fill-available;
 }
 hr ,.date,.titre{
-    display: none;
+    display: none 
 }
 .contactez-moi{
     color: #000000;

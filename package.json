@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0"
+  },
+  "dependencies": {
+    "@fontsource/open-sans": "^4.5.14",
+    "@fortawesome/fontawesome-free": "^6.3.0"
+  }
+}

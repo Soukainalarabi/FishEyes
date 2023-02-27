@@ -1,6 +1,6 @@
 import getPhotographers from "../utils/photographers-service.js"
 import mediaFactory from "../factories/mediaFactory.js"
-import trieMediaFactory from "../factories/trieMedia.js"
+import dropDownMenuFactory from "../factories/dropDownMenu.js"
 
 let getIdFromParam = () => {
     const queryString = window.location.search; // récuperer l'url depuis la page
@@ -59,7 +59,7 @@ let showPhotographerDom = (photographer) => {
     img.setAttribute("src", picture)
     img.setAttribute("alt", `image du photographe ${photographer.name}`)
 }
-trieMediaFactory(photographer, mediaFactory, mediaFilter).affichageMenuSelect()
+dropDownMenuFactory(photographer, mediaFactory, mediaFilter).affichageMenuSelect()
 showPhotographerDom(photographer)
 
 

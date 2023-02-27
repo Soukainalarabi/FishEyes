@@ -98,6 +98,9 @@ border: none;
 #choice{
     display: none;
 }
+.choice{
+    display:flex;
+}
 hr{
     width: -webkit-fill-available;
 }

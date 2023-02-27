@@ -6,12 +6,14 @@ export default function mediaFactory(medias) {
     let showMedias = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
         let galeries = document.getElementById("galerie")
         galeries.innerHTML = ""
+
         let compare = (p1, p2) => {
             if (p1 > p2) {
                 return 1
             }
             if (p1 < p2) {
                 return -1
+
             }
             return 0
         }
@@ -89,15 +91,18 @@ export default function mediaFactory(medias) {
                 pTitle.textContent = mediaPhotographer.title
                 heart1.innerHTML = `<i class="fas fa-heart fa-2x"></i>`
                 heart.addEventListener("click", () => {
-                    if (numberLikes.textContent == parseInt(+mediaPhotographer.likes)) { //si numberLike=la valeur initiale de nombre de like du media
-                        numberLikes.textContent = parseInt(++mediaPhotographer.likes) //incrémenter puis affecter la nv valeur du variable
-                        let sommeLike = document.querySelector(".sommeLike")
-                        let somme = parseInt(sommeLike.textContent)
+                    let sommeLike = document.querySelector(".sommeLike")
+                    let somme = parseInt(sommeLike.textContent)
+                    if (parseInt(numberLikes.textContent) == parseInt(mediaPhotographer.likes)) { //si numberLike=la valeur initiale de nombre de like du media
+                        numberLikes.textContent = parseInt(mediaPhotographer.likes) + 1 
                         sommeLike.textContent = somme + 1
                         like.style.color = "#901C1C"
+                    } else if (parseInt(numberLikes.textContent) > parseInt(mediaPhotographer.likes)) { 
+                        numberLikes.textContent = parseInt(mediaPhotographer.likes) 
+                        let somme = parseInt(sommeLike.textContent)
+                        sommeLike.textContent = somme - 1
+                        like.style.color = "black"
 
-                    } if (numberLikes.textContent == parseInt(++mediaPhotographer.likes)) { //si numberLike=la valeur initiale de nombre de like du media +1
-                        return
                     }
                 })
             });

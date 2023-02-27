@@ -1,5 +1,5 @@
 import { closeModal, displayModal } from "../pages/modal.js"
-export default function trieMediaFactory(photographer, mediaFactory, medias) {
+export default function dropDownMenuFactory(photographer, mediaFactory, medias) {
     let mediaFactoryObject = mediaFactory(medias, displayModal, closeModal)
     let linkIconBas = document.createElement("a")
     let iconBas = document.createElement("img")

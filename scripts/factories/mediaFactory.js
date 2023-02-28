@@ -6,7 +6,6 @@ export default function mediaFactory(medias) {
     let showMedias = (photographer, sortedByDate, sortedByTitle, sortedByLike) => {
         let galeries = document.getElementById("galerie")
         galeries.innerHTML = ""
-
         let compare = (p1, p2) => {
             if (p1 > p2) {
                 return 1

@@ -10,12 +10,11 @@ let getIdFromParam = () => {
 const identifiant = getIdFromParam()// elle renvoie une chaine de caractere pas un number
 let photographers = await getPhotographers();
 
-// await (async () => {
-//     photographers = await getPhotographers();
-
-//     // all of the script.... 
-
-// })();
+// lien vers la page d'accueil
+let allPhotographers = document.querySelector(".logo")
+allPhotographers.addEventListener("click", () => {
+    window.location = "index.html"
+})
 let somme = 0
 let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
 const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);

@@ -339,7 +339,7 @@ width:200px;
     /* margin-left: 36%;   */
  }
   .like:hover {
-    color: #901C1C;
+   
     transition: color 1s;
   }
   .fa-2x {
@@ -357,7 +357,6 @@ width:200px;
     font-size: 25px;
   } */
   .heart1:hover {
-    color: #901C1C;
     transition: color 1s;
   }
   

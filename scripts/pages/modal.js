@@ -2,6 +2,8 @@ const modal = document.getElementById("contact_modal")
 let name = document.querySelector(".name")
 let iconClose = document.querySelector(".close-modalContact")
 let modalContact = document.querySelector(".modal-contact")
+let modalLightbox = document.querySelector(".modal-lightbox")
+let modalForm = document.querySelector(".modal-form")
 ///formulaire Contact
 let form = document.querySelector("form")
 let firstName = document.getElementById("first")
@@ -15,12 +17,10 @@ let erreurEmail = document.getElementById("emailErrorMsg")
 let erreurMessage = document.getElementById("messageErrorMsg")
 //regex
 let regexName = /^[a-z]/gi
-let regexEmail = /^[\w-"."]+@([\w-]+".")+[\w-]{2,4}$/g;
+let regexEmail = /^[A-Za-z][\w$.]+@[\w]+\.\w+$/;
 let regexMessage = /^[a-z]{10}/gi
 //afficher la modale contact ou lightbox
 export function displayModal(modalContact) {
-    let modalLightbox = document.querySelector(".modal-lightbox")
-    let modalForm = document.querySelector(".modal-form")
     if (modalContact) {
         const namePhotographer = localStorage.getItem('name');
         name.textContent = namePhotographer
@@ -50,12 +50,6 @@ iconClose.addEventListener("keyup", (e) => {
         closeModal(true)
     }
 });
-// lien vers la page d'accueil
-let allPhotographers = document.querySelector(".logo")
-allPhotographers.addEventListener("click", () => {
-    window.location = "index.html"
-})
-
 //fonctions verification contenu formulaire
 let firstVerification = () => {
     if (!firstName.value) {

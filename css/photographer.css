@@ -34,7 +34,8 @@ p #erreurlastName,#erreurFirstName,#erreurEmail,#erreurMessage{
 color: #911C1C !important;
 
 }
-
+ .modal-contact{
+}
 .info-rectangle{
  position: fixed;
  z-index: 1;
@@ -138,9 +139,9 @@ color: #911C1C;
 .closeIconLightbox{
     float: right;
 }
-.modal-contact input,.contact_button {
+ .modal-contact,.contact_button {
     font-size: 20px;
-    margin-right: 40%;
+    /* margin-right: 40%; */
     font-weight: bold;
     color: white;
     padding: 11px;
@@ -150,19 +151,12 @@ color: #911C1C;
     background-color: #901C1C;
     border-radius: 5px;
 }
-/* .modam-contact{
-    text-decoration: none;
-    color: white;
-} */
-.modal-contact :hover,.modal-contact :focus {
-   
+
+input[type="button"].modal-contact:hover,input[type="button"].modal-contact:focus{
     cursor: pointer;
     color: #000000;
     outline:  2px solid  #DB8876;  
-    background-color:#DB8876 ;
-
-} 
-
+    background-color:#DB8876 ;}
 
  .modal-lightbox{
     padding-left: 10%;

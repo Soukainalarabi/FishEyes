@@ -9,13 +9,6 @@ let getIdFromParam = () => {
 }
 const identifiant = getIdFromParam()// elle renvoie une chaine de caractere pas un number
 let photographers = await getPhotographers();
-
-// await (async () => {
-//     photographers = await getPhotographers();
-
-//     // all of the script.... 
-
-// })();
 let somme = 0
 let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
 const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
@@ -25,10 +18,15 @@ for (let i = 0; i < arrayLikes.length; i++) {
     somme += arrayLikes[i]
 }
 let infoRectangle = document.querySelector(".info-rectangle")
+let logo = document.querySelector("header img")
+logo.addEventListener("click", () => {
+    window.location.href = '/index.html'
+})
 let showPhotographerDom = (photographer) => {
     if (!photographer) {
         window.location.href = '/index.html'
     }
+    //Factory info header
     const picture = `assets/photographers/${photographer.portrait}`;
     let photographerHeader = document.querySelector(".photograph-header")
     let photographerInfo = document.querySelector(".photograph-information")

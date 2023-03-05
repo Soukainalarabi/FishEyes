@@ -45,12 +45,11 @@ modalContact.addEventListener("click", () => {
     displayModal(true)
 })
 iconClose.addEventListener("keyup", (e) => {
-
     if (e.key == 'Enter') {
         closeModal(true)
     }
 });
-//fonctions verification contenu formulaire
+//la verification du contenu du formulaire
 let firstVerification = () => {
     if (!firstName.value) {
         erreurFirstName.textContent = "Veuillez saisir votre prénom "
@@ -109,8 +108,6 @@ let messageVerification = () => {
 
     }
 }
-
-
 //envoie du formulaire
 form.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -127,7 +124,7 @@ form.addEventListener("submit", (e) => {
             message: message.value
         }
         console.log(infoFormulaire);
-        document.forms['reserve'].reset(); //le contenue du formulaire sera initialisé
+        document.forms['reserve'].reset(); //le contenu du formulaire sera initialisé
 
     }
 

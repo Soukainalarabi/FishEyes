@@ -2,7 +2,7 @@ import getPhotographers from "../utils/photographers-service.js"
 import photographerFactory from "../factories/photographer.js"
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
-
+    //on va affiché les elements de chaque photographer en utilisant photographerFactory
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
@@ -20,4 +20,3 @@ async function init() {
 }
 
 init();
-

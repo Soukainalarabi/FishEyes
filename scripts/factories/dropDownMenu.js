@@ -1,6 +1,5 @@
-import { closeModal, displayModal } from "../pages/modal.js"
-export default function dropDownMenuFactory(photographer, mediaFactory, medias) {
-    let mediaFactoryObject = mediaFactory(medias, displayModal, closeModal)
+//cette fonction crée le menu déroulant qui effectue le trie des medias
+export default function dropDownMenuFactory( showMedias) {
     let linkIconBas = document.createElement("a")
     let iconBas = document.createElement("img")
     let selectOption = document.getElementById("choice-select")
@@ -40,7 +39,8 @@ export default function dropDownMenuFactory(photographer, mediaFactory, medias) 
             titreButton.style.display = "none"
             ligneHr1.style.display = "none"
             ligneHr2.style.display = "none"
-            mediaFactoryObject.showMedias(photographer, true)
+            //on appel la fonction showMedias()du fichier pages/photographer.js pour retrier les medias par date
+            showMedias( true)
         } else if (e.target.value == "popularite") {
             populariteButton.appendChild(linkIconBas)
             dateButton.style.display = "none"
@@ -49,7 +49,8 @@ export default function dropDownMenuFactory(photographer, mediaFactory, medias) 
             titreButton.style.display = "none"
             ligneHr1.style.display = "none"
             ligneHr2.style.display = "none"
-            mediaFactoryObject.showMedias(photographer, false, false, true)
+             //on appel la fonction showMedias()du fichier pages/photographer.js pour retrier les medias par nombre des likes
+            showMedias( false, false, true)
         } else if (e.target.value == "titre") {
             titreButton.appendChild(linkIconBas)
             iconBas.style.transform = "none"
@@ -58,9 +59,11 @@ export default function dropDownMenuFactory(photographer, mediaFactory, medias) 
             ligneHr1.style.display = "none"
             ligneHr2.style.display = "none"
             titreButton.style.display = "block"
-            mediaFactoryObject.showMedias(photographer, false, true)
+             //on appel la fonction showMedias()du fichier pages/photographer.js pour retrier les medias par titre
+            showMedias( false, true)
         }
     })
+    /*afficher le menu déroulant par défaut */
     let affichageMenuSelect = () => {
         populariteButton.appendChild(linkIconBas)
         linkIconBas.appendChild(iconBas)

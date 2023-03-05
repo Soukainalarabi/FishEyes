@@ -35,8 +35,7 @@ p #erreurlastName,#erreurFirstName,#erreurEmail,#erreurMessage{
 color: #911C1C !important;
 
 }
- .modal-contact{
-}
+
 .info-rectangle{
  position: fixed;
  z-index: 1;

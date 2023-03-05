@@ -1,4 +1,5 @@
 import Photographer from "../models/photographer.js"
+//cette factorie crée l'objet qui crée l'élément photographer de la page d'accueil
 export default function photographerFactory(data) {
     const photographer = new Photographer(data)
     const id = photographer.id

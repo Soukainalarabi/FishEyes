@@ -13,10 +13,10 @@ async function displayData(photographers) {
         })
     });
 }
-async function init() {
+function init() {
     // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
+    getPhotographers().then(photographer => displayData(photographer.photographers)
+    );
 }
 
 init();

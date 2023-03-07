@@ -1,5 +1,5 @@
 import Media from "../models/media.js"
-//cette factorie crée l'objet qui crée l'élément media qui sera affiché dans le tableau des medias photographer
+//cette factorie crée l'objet qui crée l'élément media qui sera afficher dans le tableau des medias photographer
 export default function mediaFactory(photographer) {
     const id = photographer.id
     let getMediaDOM = (medias,index,showLightBox) => {
@@ -37,7 +37,7 @@ export default function mediaFactory(photographer) {
                 )
                 lightbox.appendChild(img);
                 img.addEventListener("click", () => {
-                    //on appel la fonction showLightBox qui va affiché l'image cliquer dans la modal lightbox
+                    //on appel la fonction showLightBox qui va afficher l'image cliquer dans la modal lightbox
                     showLightBox(medias, index)
                 })
             } else {

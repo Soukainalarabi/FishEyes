@@ -9,7 +9,9 @@ header{
     justify-content: space-between;
     align-items: center;
 }
-.logo {
+.logo-photographer {
+    height: 40px;
+    margin-bottom: 2%;
     margin-left: 0!important;
     cursor: pointer;
 }
@@ -262,6 +264,7 @@ form input {
 border-radius: 50%;
 height: 200px;
 width:200px;
+object-fit: cover;
 }
 
 /*/////////creation//////////////:*/

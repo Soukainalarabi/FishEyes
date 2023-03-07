@@ -14,6 +14,10 @@ let somme = 0
 getPhotographers().then(photographers => {
     //chercher le photographer selon l'id passer en parametre de l'url
     let photographer = photographers.photographers.find(photographer => photographer.id == identifiant)
+    //si on arrive pas a trouver le photographer dans l'id récupérer depuis l'url on retourne vers la page accueil
+    if (!photographer) {
+        window.location.href = '/index.html'
+    }
     //filtrer que les medias du photographer qui correspond a l'id trouver
     const mediaFilter = photographers.media.filter(mediaPhotographer => mediaPhotographer.photographerId == identifiant);
     let mediaModel = mediaFactory(photographer)
@@ -29,10 +33,6 @@ getPhotographers().then(photographers => {
         window.location.href = '/index.html'
     })
     let showPhotographerDom = (photographer) => {
-        //si on arrive pas a trouver le photographer dans l'id récupérer depuis l'url on retourne vers la page index
-        if (!photographer) {
-            window.location.href = '/index.html'
-        }
         // afficher les informations du photographe
         const picture = `assets/photographers/${photographer.portrait}`;
         let photographerHeader = document.querySelector(".photograph-header")
@@ -122,6 +122,7 @@ getPhotographers().then(photographers => {
         linkMediaSuivant.setAttribute("href", "#")
         linkMediaSuivant.appendChild(iconSuivant)
         modalLightbox.appendChild(pLightbox)
+        //evenements lightbox
         iconSuivant.addEventListener("click", () => {
             mediaSuivant(medias, index)
         })

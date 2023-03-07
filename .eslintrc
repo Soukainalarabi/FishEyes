@@ -1,16 +1,16 @@
 {
-    "root": true,
+    "root": true, //indique à ESLint de ne pas rechercher de fichier de configuration dans des répertoires plus hauts 
     "parserOptions": {
-      "ecmaVersion": 2018,
-      "sourceType": "module",
+      "ecmaVersion": 2018, //VERSION
+      "sourceType": "module", //pour supporter import et export
       "parser": "babel-eslint"
     },
     "env": {
-      "browser": true,
-      "es6": true
+      "browser": true,//pour window
+      "es6": true //pour les « nouveaux » standards
     },
     "extends": [
-      "eslint:recommended"
+      "eslint:recommended"//permet de spécifier un ou plusieurs rulesets sur lesquels s’appuyer
     ]
   }
   
